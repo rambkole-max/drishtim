@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Drishtim | Content that ships. Replies that come back. Latur, India.</title>
-<meta name="description" content="Drishtim – Premium creative studio in Latur, Maharashtra offering branding, video production, and paid media management. Grow your brand with us.">
+<title>Drishtim | Small, premium, creative studio — Latur, India</title>
+<meta name="description" content="Reels, photography, and ads — built once, shipped everywhere. A new, founder-led creative studio in Latur. Small by choice, premium by craft. 24-hour reply commitment, always.">
 <meta name="author" content="Drishtim">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#C75B39" media="(prefers-color-scheme: light)">
@@ -12,12 +12,14 @@
 <link rel="canonical" href="https://drishtim.in/">
 
 <!-- Open Graph -->
-<meta property="og:title" content="Drishtim | The small studio that doesn't disappear">
-<meta property="og:description" content="We create content that gets your brand seen, clicked, and remembered. Based in Latur, Maharashtra.">
-<meta property="og:image" content="https://drishtim.in/og-image.jpg">
+<meta property="og:title" content="Drishtim | Small, premium, creative studio — Latur, India">
+<meta property="og:description" content="Reels, photography, and ads — built once, shipped everywhere. A new, founder-led creative studio in Latur. Small by choice, premium by craft.">
+<meta property="og:image" content="https://drishtim.in/og-image.jpg?v=2">
+<meta property="og:image:secure_url" content="https://drishtim.in/og-image.jpg?v=2">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Drishtim — Small Studio, Fast Replies, Latur, India">
+<meta property="og:image:alt" content="Drishtim — Small, Premium, Creative Studio. Latur, Maharashtra, India.">
 <meta property="og:url" content="https://drishtim.in/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Drishtim">
@@ -25,9 +27,10 @@
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Drishtim | The small studio that doesn't disappear">
-<meta name="twitter:description" content="We create content that gets your brand seen, clicked, and remembered.">
-<meta name="twitter:image" content="https://drishtim.in/og-image.jpg">
+<meta name="twitter:title" content="Drishtim | Small, premium, creative studio — Latur, India">
+<meta name="twitter:description" content="Reels, photography, and ads — built once, shipped everywhere. Founder-led from Latur. Small by choice, premium by craft.">
+<meta name="twitter:image" content="https://drishtim.in/og-image.jpg?v=2">
+<meta name="twitter:image:alt" content="Drishtim — Small, Premium, Creative Studio. Latur, Maharashtra, India.">
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23C75B39'/><text x='50' y='68' font-family='Georgia,serif' font-size='58' font-weight='700' fill='white' text-anchor='middle'>D</text></svg>">
@@ -40,9 +43,9 @@
   "@id": "https://drishtim.in/#business",
   "name": "Drishtim",
   "alternateName": "Drishtim Creative Studio",
-  "description": "Premium creative studio offering branding, video production, and paid media management.",
+  "description": "Small, premium, creative studio in Latur. Founder-led. Reels, photography, ads, and brand identity — built once, shipped everywhere.",
   "url": "https://drishtim.in",
-  "image": "https://drishtim.in/og-image.jpg",
+  "image": "https://drishtim.in/og-image.jpg?v=2",
   "logo": "https://drishtim.in/assets/logo-mark.png",
   "telephone": "+918484802019",
   "email": "support@drishtim.in",
@@ -721,6 +724,43 @@ section[id]{scroll-margin-top:80px}
 .stats-heading{font-family:'Fraunces',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:#fff;margin:0 auto;max-width:640px;line-height:1.25;letter-spacing:-0.01em}
 
 
+
+/* Who We Are — slide-3 parity */
+.who-we-are{padding:80px 24px 80px;background:var(--bg);position:relative}
+[data-theme="dark"] .who-we-are{background:var(--bg)}
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1100px;margin:48px auto 0;text-align:left}
+.who-item{padding:28px 26px;background:var(--card-bg);border:1px solid var(--border);border-radius:18px;display:flex;flex-direction:column;gap:10px;transition:transform .3s ease,box-shadow .3s ease}
+.who-item:hover{transform:translateY(-4px);box-shadow:0 14px 30px -16px rgba(0,0,0,0.18)}
+.who-num{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:700;color:var(--accent);letter-spacing:.06em}
+.who-item h3{font-family:'Fraunces',serif;font-size:1.18rem;font-weight:700;color:var(--text);margin:0;line-height:1.25}
+.who-item p{font-size:.94rem;color:var(--text-muted);line-height:1.6;margin:0}
+.who-item p strong{color:var(--text);font-weight:700}
+
+/* Services — 4-card grid + photo icon + svc tag */
+.services-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.service-icon.photo{background:linear-gradient(135deg,#0E4D4A,#5EB9B2)}
+.svc-tag{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:1.6px;color:var(--teal);margin:0 0 10px;line-height:1}
+.service-card .svc-tag + p{margin-top:0}
+
+/* Pricing — 4-card grid */
+.pricing-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:stretch;max-width:1200px;margin:0 auto 64px}
+.pricing-grid-4 .pricing-card{padding:32px 24px}
+
+/* Workflow afterword */
+.workflow-after{max-width:720px;margin:40px auto 0;padding:18px 26px;background:var(--card-bg);border:1px solid var(--teal);border-radius:14px;text-align:center;font-size:.95rem;color:var(--text);line-height:1.6}
+.workflow-after strong{color:var(--teal);font-weight:700}
+
+@media (max-width:1024px){
+  .services-grid-4{grid-template-columns:repeat(2,1fr)}
+  .pricing-grid-4{grid-template-columns:repeat(2,1fr);max-width:760px}
+  .who-grid{grid-template-columns:1fr;max-width:560px;gap:18px}
+}
+@media (max-width:640px){
+  .services-grid-4{grid-template-columns:1fr;max-width:480px;margin:0 auto}
+  .pricing-grid-4{grid-template-columns:1fr;max-width:480px}
+  .who-we-are{padding:64px 20px}
+}
+
 </style>
 </head>
 <body>
@@ -761,9 +801,9 @@ section[id]{scroll-margin-top:80px}
 <section class="hero">
   <div class="hero-accent" aria-hidden="true"></div>
   <div class="hero-content">
-    <div class="hero-badge">Small Studio &middot; Fast Replies &middot; Latur, India</div>
+    <div class="hero-badge">Small &middot; Premium &middot; Creative &middot; Latur, India</div>
     <h1>Drish<em>tim</em></h1>
-    <p class="hero-tagline">Reels, YouTube, and ads &mdash; built once, shipped everywhere. A small studio in Latur that actually replies.</p>
+    <p class="hero-tagline">Reels, photography, and ads &mdash; built once, shipped everywhere. A new, founder-led creative studio in Latur. Small by choice, premium by craft.</p>
     <div class="hero-btns">
       <a href="#contact" class="btn btn-primary">Get a free 48-hour Content Audit</a>
       <a href="https://wa.me/918484802019?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Drishtim." target="_blank" rel="noopener" class="hero-wa-link">
@@ -779,7 +819,7 @@ section[id]{scroll-margin-top:80px}
     </ul>
     <div class="hero-slots" role="note">
       <span class="slot-dot" aria-hidden="true"></span>
-      <span>Taking <strong>2 retainer clients</strong> for May &middot; 1 Brand Launch slot left this quarter</span>
+      <span>Currently accepting new retainer clients &middot; <strong>20-min fit call first</strong></span>
     </div>
   </div>
 </section>
@@ -816,62 +856,70 @@ section[id]{scroll-margin-top:80px}
     <p class="stats-caveat">We started one month ago, with one client. Everything on this page is what we promise &mdash; not what we've inflated. Numbers grow from here, transparently.</p>
   </div>
 </section>
+<section class="who-we-are" id="who" aria-label="Who we are">
+  <div class="container text-center">
+    <span class="section-label fade-up">Who We Are</span>
+    <h2 class="section-title fade-up">A creative studio that treats your brand like it&rsquo;s our own.</h2>
+    <p class="section-sub fade-up">We&rsquo;re Drishtim &mdash; a founder-led creative studio based in Latur. We work only with brands we believe in, and we show up like it&rsquo;s our own name on the door.</p>
+    <div class="who-grid">
+      <div class="who-item fade-up">
+        <span class="who-num">01</span>
+        <h3>Regional Fluency</h3>
+        <p>We grew up in Maharashtra. We know why a reel that works in Mumbai flops in Solapur. <strong>Marathi, Hindi, English</strong> &mdash; not checkboxes, our first languages.</p>
+      </div>
+      <div class="who-item fade-up">
+        <span class="who-num">02</span>
+        <h3>Founder-Led</h3>
+        <p>You work with <strong>Ram</strong>, not a junior account manager. The person who takes your brief is the one who signs off on every edit. Reply in <strong>24 hours</strong>, always.</p>
+      </div>
+      <div class="who-item fade-up">
+        <span class="who-num">03</span>
+        <h3>Craft, Not Churn</h3>
+        <p>We keep the client list small so the work stays ours. No templates, no stock, no shortcuts &mdash; every brand gets the attention it paid for.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <section class="services" id="services">
   <div class="container text-center">
-    <span class="section-label fade-up">What We Do</span>
-    <h2 class="section-title fade-up">Three things we do well</h2>
-    <p class="section-sub fade-up">No kitchen-sink packages. Branding, content, and paid &mdash; done properly.</p>
-    <div class="services-grid">
-      <div class="service-card fade-up">
-        <div class="service-icon brand"><svg class="icon icon-palette" aria-hidden="true"><use href="#icon-palette"/></svg></div>
-        <h3>Premium Branding</h3>
-        <p>Your visual identity system &mdash; built properly once, used for years.</p>
-        <div class="service-deliverables">
-          <span class="sd-label">What you get</span>
-          <ul>
-            <li>Logo + 5 format variants (horizontal, stacked, mark, mono, reversed)</li>
-            <li>Brand guidelines PDF &mdash; colours, type, spacing, do/don't</li>
-            <li>Social templates for Instagram, YouTube, LinkedIn</li>
-            <li>Letterhead, invoice, business-card files</li>
-          </ul>
-        </div>
-      </div>
+    <span class="section-label fade-up">What We Make</span>
+    <h2 class="section-title fade-up">One studio. Every asset your brand needs.</h2>
+    <p class="section-sub fade-up">Reels, stills, ads, identity &mdash; in Marathi, Hindi, or English. No kitchen-sink, no templates.</p>
+    <div class="services-grid services-grid-4">
 
       <div class="service-card fade-up">
         <div class="service-icon content"><svg class="icon icon-film" aria-hidden="true"><use href="#icon-film"/></svg></div>
-        <h3>Performance Content</h3>
-        <p>One shoot, distributed across every short-form platform your audience uses.</p>
-        <div class="service-deliverables">
-          <span class="sd-label">What you get</span>
-          <ul>
-            <li>10 reels / month, shot on-site, edited with platform-native pacing</li>
-            <li>Posted to <strong>Instagram Reels</strong>, <strong>YouTube Shorts</strong>, and <strong>Facebook Reels</strong> &mdash; same content, three audiences</li>
-            <li>4 static posts + captions, hashtags, cover frames</li>
-            <li>Monthly insights report with what's working per platform</li>
-            <li>Optional: long-form YouTube cut (add-on)</li>
-          </ul>
-        </div>
+        <h3>Reels &amp; Video</h3>
+        <p class="svc-tag">The heart of the feed</p>
+        <p>Scripted, shot, and edited for your audience. Food cinemagraphs, founder reels, BTS, product stories, brand films &mdash; all in native Marathi, Hindi, or English. Posted to <strong>Instagram</strong>, <strong>YouTube Shorts</strong>, and <strong>Facebook Reels</strong>.</p>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon photo"><svg class="icon icon-camera" aria-hidden="true"><use href="#icon-camera"/></svg></div>
+        <h3>Photography</h3>
+        <p class="svc-tag">On-location &amp; studio</p>
+        <p>Editorial food photography, architectural interiors, product stills, lifestyle campaigns, team and portrait work. Always shot on-site, never stock.</p>
       </div>
 
       <div class="service-card fade-up">
         <div class="service-icon promo"><svg class="icon icon-bullhorn" aria-hidden="true"><use href="#icon-bullhorn"/></svg></div>
-        <h3>Paid Promotions</h3>
-        <p>Ads run across the platforms that actually convert for your category.</p>
-        <div class="service-deliverables">
-          <span class="sd-label">What you get</span>
-          <ul>
-            <li>Campaigns on <strong>Meta</strong> (Instagram + Facebook), <strong>Google</strong> (Search + YouTube), and where relevant <strong>LinkedIn</strong></li>
-            <li>Ad creative testing &mdash; 3 hooks, 2 edits, 1 winner per cycle</li>
-            <li>Landing page copy and audience targeting</li>
-            <li>Weekly performance report with CPL, ROAS, next-step recommendation</li>
-            <li>Your ad account, your money &mdash; we manage, you pay the platform directly</li>
-          </ul>
-        </div>
+        <h3>Ads &amp; Growth</h3>
+        <p class="svc-tag">Meta + Google</p>
+        <p>Campaign strategy, ad creative, A/B testing, budget management. We don&rsquo;t touch your money &mdash; you pay platforms directly. Monthly reports with real numbers.</p>
       </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon brand"><svg class="icon icon-palette" aria-hidden="true"><use href="#icon-palette"/></svg></div>
+        <h3>Brand Identity</h3>
+        <p class="svc-tag">From scratch or refreshed</p>
+        <p>Logo systems, colour palettes, typography, brand voice, packaging, print collateral, WhatsApp catalogues, Instagram highlight covers. The full kit.</p>
+      </div>
+
     </div>
       <div class="services-footer fade-up">
-      <a href="#case-studies" class="services-link">See how these three things work together on real brands <span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="#case-studies" class="services-link">See how these come together for one real brand <span class="arrow" aria-hidden="true">&rarr;</span></a>
     </div>
 </div>
 </section>
@@ -1028,10 +1076,10 @@ section[id]{scroll-margin-top:80px}
 <section class="pricing" id="pricing">
   <div class="container text-center">
     <span class="section-label fade-up">Pricing</span>
-    <h2 class="section-title fade-up">Three plans. The middle one is the one.</h2>
+    <h2 class="section-title fade-up">Four plans. The middle two earn most attention.</h2>
     <p class="section-sub fade-up">Every annual starts with a 3-month monthly pilot &mdash; by the time you sign a year, we've both already proven it works.</p>
 
-    <div class="pricing-grid pricing-grid-3">
+    <div class="pricing-grid pricing-grid-4">
 
       <div class="pricing-card fade-up">
         <div class="pricing-label">Reels Retainer</div>
@@ -1080,6 +1128,22 @@ section[id]{scroll-margin-top:80px}
         <a href="#contact" class="btn btn-secondary">Launch my brand</a>
       </div>
 
+    
+      <div class="pricing-card fade-up">
+        <div class="pricing-tag">One-time</div>
+        <h3 class="pricing-name">Ad Campaign Sprint</h3>
+        <p class="pricing-blurb">A focused 30-day push for a launch, festival, or season.</p>
+        <div class="pricing-price"><span class="price-amount">&#8377;39,999</span><span class="price-per"> one-time</span></div>
+        <p class="pricing-min">30-day push &middot; Meta + Google</p>
+        <ul class="pricing-features">
+          <li>Campaign strategy + creative brief</li>
+          <li>8 creatives (reels + static)</li>
+          <li>Meta + Google Ads setup &amp; pixel</li>
+          <li>End-of-campaign ROAS report</li>
+          <li>Ad spend billed separately, paid by you to the platform</li>
+        </ul>
+        <a href="#contact" class="btn btn-secondary pricing-cta">Plan a sprint</a>
+      </div>
     </div>
 
     <div class="annual-band fade-up">
@@ -1102,51 +1166,44 @@ section[id]{scroll-margin-top:80px}
 
 <section class="workflow" id="workflow">
   <div class="container text-center">
-    <span class="section-label fade-up">Our Process</span>
-    <h2 class="section-title fade-up">What happens after you say yes</h2>
-    <p class="section-sub fade-up">A tight rhythm &mdash; nothing hidden, nothing surprise.</p>
+    <span class="section-label fade-up">How We Work</span>
+    <h2 class="section-title fade-up">From first call to first reel live &mdash; 30 days.</h2>
+    <p class="section-sub fade-up">No chaos. No guesswork. A predictable creative engine on a predictable schedule.</p>
     <div class="workflow-path">
       <div class="workflow-step">
         <div class="step-num">1</div>
         <div class="step-content">
           <div class="step-time">Week 1</div>
-          <h4>Strategic Discovery</h4>
-          <p>Deep-dive into your brand, audience, competitors, and goals to form a clear creative direction.</p>
+          <h4>Discovery</h4>
+          <p>90-minute founder call. Brand audit. Competitor scan. Written brief in 5 days.</p>
         </div>
       </div>
       <div class="workflow-step">
         <div class="step-num">2</div>
         <div class="step-content">
-          <div class="step-time">Week 1–2</div>
-          <h4>Identity Architecture</h4>
-          <p>Building your visual identity system, brand language, and content frameworks.</p>
+          <div class="step-time">Week 2</div>
+          <h4>Build</h4>
+          <p>Content calendar approved. Shoot day scheduled. Branding draft in parallel if needed.</p>
         </div>
       </div>
       <div class="workflow-step">
         <div class="step-num">3</div>
         <div class="step-content">
-          <div class="step-time">Ongoing</div>
-          <h4>High-Fidelity Production</h4>
-          <p>Creating premium content: videos, graphics, reels, and campaigns tailored to each platform.</p>
+          <div class="step-time">Week 3</div>
+          <h4>Shoot</h4>
+          <p>Half or full day on location. Everything backed up twice. Rough cuts in 48 hours.</p>
         </div>
       </div>
       <div class="workflow-step">
         <div class="step-num">4</div>
         <div class="step-content">
-          <div class="step-time">Monthly</div>
-          <h4>Review &amp; Optimization</h4>
-          <p>Analysing performance data, refining strategies, and optimising content for better results.</p>
-        </div>
-      </div>
-      <div class="workflow-step">
-        <div class="step-num">5</div>
-        <div class="step-content">
-          <div class="step-time">Continuous</div>
-          <h4>Scaling &amp; Expansion</h4>
-          <p>Expanding reach across new platforms, audiences, and markets for sustained growth.</p>
+          <div class="step-time">Week 4</div>
+          <h4>Launch</h4>
+          <p>First content goes live. Shared tracking sheet opens. WhatsApp feedback loop starts.</p>
         </div>
       </div>
     </div>
+    <p class="workflow-after fade-up"><strong>From Month 2:</strong> Monthly 30-min report call. Quarterly 90-min strategy review. <strong>24-hour reply commitment, always.</strong></p>
   </div>
 </section>
 
