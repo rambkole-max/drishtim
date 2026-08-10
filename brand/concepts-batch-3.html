@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drishtim — logo concepts, batch 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0A0A09;--paper:#EDEBE5;--flare:#FF4D1C;--acid:#D8FF3E;
+  --mute:rgba(237,235,229,.55);--hair:rgba(237,235,229,.15);
+  --arch:'Archivo',system-ui,sans-serif;--serif:'Instrument Serif',Georgia,serif;--grot:'Space Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ink);color:var(--paper);font-family:var(--grot);font-size:16px;line-height:1.55}
+.wrap{max-width:74rem;margin:0 auto;padding:3.5rem 2rem 6rem}
+h1{font-family:var(--arch);font-variation-settings:'wdth' 120,'wght' 900;font-weight:400;
+  font-size:clamp(2rem,5vw,3.4rem);text-transform:uppercase;letter-spacing:-.04em;line-height:.9}
+h1 em{font-family:var(--serif);font-style:italic;font-variation-settings:normal;text-transform:none;color:var(--flare)}
+.lede{color:var(--mute);max-width:58ch;margin-top:1rem}
+.kick{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--flare)}
+.route{margin-top:3.5rem;padding-top:1.5rem;border-top:2px solid var(--flare)}
+.route h2{font-family:var(--arch);font-variation-settings:'wdth' 116,'wght' 900;font-weight:400;
+  font-size:1.9rem;text-transform:uppercase;letter-spacing:-.03em}
+.route p{color:var(--mute);max-width:56ch;margin-top:.4rem;font-size:.95rem}
+.card{border:1px solid var(--hair);border-radius:6px;margin-top:1.4rem;overflow:hidden}
+.card h3{font-family:var(--arch);font-variation-settings:'wdth' 110,'wght' 800;font-weight:400;
+  font-size:1.35rem;text-transform:uppercase;letter-spacing:-.025em}
+.head{padding:1.3rem 1.6rem;border-bottom:1px solid var(--hair);display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.head p{color:var(--mute);font-size:.9rem;max-width:44ch;margin-left:auto;margin-top:0}
+.grid{display:grid;grid-template-columns:1.15fr 1fr}
+.pane{padding:2rem 1.6rem;display:flex;flex-direction:column;gap:1.3rem;align-items:flex-start}
+.pane.light{background:var(--paper);color:var(--ink);border-left:1px solid var(--hair)}
+.lbl{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.pane.light .lbl{color:rgba(10,10,9,.5)}
+.sizes{display:flex;align-items:flex-end;gap:1.5rem;flex-wrap:wrap}
+.lock{display:flex;align-items:center;gap:.8rem}
+.wm{font-family:var(--arch);font-variation-settings:'wdth' 116,'wght' 800;font-weight:400;
+  font-size:1.45rem;letter-spacing:.01em;text-transform:uppercase;line-height:1}
+.note{padding:1.1rem 1.6rem;border-top:1px solid var(--hair);font-size:.87rem;color:var(--mute)}
+.note b{color:var(--paper);font-weight:400}
+.caret{font-family:var(--arch);font-variation-settings:'wdth' 112,'wght' 800;font-weight:400;
+  font-size:3.2rem;letter-spacing:-.03em;line-height:1;display:inline-flex;align-items:center;gap:.12em}
+.caret .bar{width:.16em;height:.78em;background:var(--flare);animation:blink 1.15s steps(1) infinite}
+.caret.sm{font-size:1.5rem}
+.caret.dark{color:var(--ink)}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.caret .bar{animation:none}}
+@media (max-width:820px){.grid{grid-template-columns:1fr}.pane.light{border-left:0;border-top:1px solid var(--hair)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="kick">Drishtim · logo concepts, batch 3</p>
+<h1>Two per <em>route</em></h1>
+<p class="lede">Eight marks across the four positioning routes. Same test as before: large, lockup, 40px,
+22px favicon, ink and paper.</p>
+
+<!-- ================= ROUTE 1 ================= -->
+<div class="route">
+  <h2>1 · Reach &amp; attention</h2>
+  <p>Says "we get you seen and chosen." Positions Drishtim as a marketing partner on retainer.</p>
+</div>
+
+<div class="card">
+  <div class="head"><span class="kick">K</span><h3>Feed grid</h3>
+    <p>Nine cells, one lit. The grid is the thing every client already understands — and the lit cell is the post that worked.</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Mark · on ink</span>
+      <div class="sizes">
+        <svg width="120" height="120" viewBox="0 0 200 200" aria-label="Feed grid mark">
+          <g fill="#EDEBE5">
+            <rect x="12" y="12" width="52" height="52" rx="6"/><rect x="74" y="12" width="52" height="52" rx="6"/><rect x="136" y="12" width="52" height="52" rx="6"/>
+            <rect x="12" y="74" width="52" height="52" rx="6"/><rect x="136" y="74" width="52" height="52" rx="6"/>
+            <rect x="12" y="136" width="52" height="52" rx="6"/><rect x="74" y="136" width="52" height="52" rx="6"/><rect x="136" y="136" width="52" height="52" rx="6"/>
+          </g>
+          <rect x="74" y="74" width="52" height="52" rx="6" fill="#FF4D1C"/>
+        </svg>
+        <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true">
+          <g fill="#EDEBE5">
+            <rect x="12" y="12" width="52" height="52" rx="8"/><rect x="74" y="12" width="52" height="52" rx="8"/><rect x="136" y="12" width="52" height="52" rx="8"/>
+            <rect x="12" y="74" width="52" height="52" rx="8"/><rect x="136" y="74" width="52" height="52" rx="8"/>
+            <rect x="12" y="136" width="52" height="52" rx="8"/><rect x="74" y="136" width="52" height="52" rx="8"/><rect x="136" y="136" width="52" height="52" rx="8"/></g>
+          <rect x="74" y="74" width="52" height="52" rx="8" fill="#FF4D1C"/>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <g fill="#EDEBE5"><rect x="14" y="14" width="80" height="80" rx="12"/><rect x="106" y="14" width="80" height="80" rx="12"/><rect x="14" y="106" width="80" height="80" rx="12"/></g>
+          <rect x="106" y="106" width="80" height="80" rx="12" fill="#FF4D1C"/>
+        </svg>
+      </div>
+      <span class="lbl">Lockup</span>
+      <div class="lock">
+        <svg width="32" height="32" viewBox="0 0 200 200" aria-hidden="true">
+          <g fill="#EDEBE5"><rect x="14" y="14" width="80" height="80" rx="12"/><rect x="106" y="14" width="80" height="80" rx="12"/><rect x="14" y="106" width="80" height="80" rx="12"/></g>
+          <rect x="106" y="106" width="80" height="80" rx="12" fill="#FF4D1C"/>
+        </svg>
+        <span class="wm">Drishtim</span>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">Mono · on paper</span>
+      <div class="sizes">
+        <svg width="88" height="88" viewBox="0 0 200 200" aria-hidden="true">
+          <g fill="rgba(10,10,9,.28)">
+            <rect x="12" y="12" width="52" height="52" rx="6"/><rect x="74" y="12" width="52" height="52" rx="6"/><rect x="136" y="12" width="52" height="52" rx="6"/>
+            <rect x="12" y="74" width="52" height="52" rx="6"/><rect x="136" y="74" width="52" height="52" rx="6"/>
+            <rect x="12" y="136" width="52" height="52" rx="6"/><rect x="74" y="136" width="52" height="52" rx="6"/><rect x="136" y="136" width="52" height="52" rx="6"/></g>
+          <rect x="74" y="74" width="52" height="52" rx="6" fill="#0A0A09"/>
+        </svg>
+        <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+          <g fill="rgba(10,10,9,.3)"><rect x="14" y="14" width="80" height="80" rx="12"/><rect x="106" y="14" width="80" height="80" rx="12"/><rect x="14" y="106" width="80" height="80" rx="12"/></g>
+          <rect x="106" y="106" width="80" height="80" rx="12" fill="#0A0A09"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <p class="note"><b>Most immediately "social media" of anything so far.</b> A restaurant owner gets it in half a second.
+    Risk: grids of squares are a crowded space — the tonal step on the unlit cells is what keeps it from generic.</p>
+</div>
+
+<div class="card">
+  <div class="head"><span class="kick">L</span><h3>Ripple</h3>
+    <p>One point, three expanding waves. Literally "built once, shipped everywhere" — your tagline as a diagram.</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Mark · on ink</span>
+      <div class="sizes">
+        <svg width="120" height="120" viewBox="0 0 200 200" aria-label="Ripple mark">
+          <circle cx="52" cy="100" r="18" fill="#FF4D1C"/>
+          <g fill="none" stroke="#EDEBE5" stroke-width="9" stroke-linecap="round">
+            <path d="M76 58.4 A48 48 0 0 1 76 141.6"/>
+            <path d="M90 34.2 A76 76 0 0 1 90 165.8"/>
+            <path d="M104 13.4 A100 100 0 0 1 104 186.6"/>
+          </g>
+        </svg>
+        <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="52" cy="100" r="22" fill="#FF4D1C"/>
+          <g fill="none" stroke="#EDEBE5" stroke-width="15" stroke-linecap="round">
+            <path d="M78 55 A52 52 0 0 1 78 145"/>
+            <path d="M96 26 A84 84 0 0 1 96 174"/>
+          </g>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="58" cy="100" r="30" fill="#FF4D1C"/>
+          <path d="M104 44 A72 72 0 0 1 104 156" fill="none" stroke="#EDEBE5" stroke-width="24" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="lbl">Lockup</span>
+      <div class="lock">
+        <svg width="34" height="34" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="52" cy="100" r="22" fill="#FF4D1C"/>
+          <g fill="none" stroke="#EDEBE5" stroke-width="15" stroke-linecap="round">
+            <path d="M78 55 A52 52 0 0 1 78 145"/><path d="M96 26 A84 84 0 0 1 96 174"/></g>
+        </svg>
+        <span class="wm">Drishtim</span>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">Mono · on paper</span>
+      <div class="sizes">
+        <svg width="88" height="88" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="52" cy="100" r="18" fill="#0A0A09"/>
+          <g fill="none" stroke="#0A0A09" stroke-width="9" stroke-linecap="round">
+            <path d="M76 58.4 A48 48 0 0 1 76 141.6"/><path d="M90 34.2 A76 76 0 0 1 90 165.8"/>
+            <path d="M104 13.4 A100 100 0 0 1 104 186.6"/></g>
+        </svg>
+        <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="58" cy="100" r="30" fill="#0A0A09"/>
+          <path d="M104 44 A72 72 0 0 1 104 156" fill="none" stroke="#0A0A09" stroke-width="24" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <p class="note"><b>The clearest business argument.</b> One shoot, many channels, growing reach — that's the retainer
+    pitch in a symbol. It also animates perfectly: waves emit outward on load. Risk: reads as wifi if the arcs are too thin.</p>
+</div>
+
+<!-- ================= ROUTE 2 ================= -->
+<div class="route">
+  <h2>2 · Craft &amp; capture</h2>
+  <p>Says "we make beautiful things." Truer to how you work today; caps you as a production studio.</p>
+</div>
+
+<div class="card">
+  <div class="head"><span class="kick">M</span><h3>Contact sheet</h3>
+    <p>Six frames, one circled in grease pencil. The mark isn't the camera — it's the judgement about which frame is the good one.</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Mark · on ink</span>
+      <div class="sizes">
+        <svg width="130" height="120" viewBox="0 0 200 190" aria-label="Contact sheet mark">
+          <g fill="#EDEBE5">
+            <rect x="14" y="42" width="52" height="38" rx="4"/><rect x="74" y="42" width="52" height="38" rx="4"/><rect x="134" y="42" width="52" height="38" rx="4"/>
+            <rect x="14" y="110" width="52" height="38" rx="4"/><rect x="74" y="110" width="52" height="38" rx="4"/><rect x="134" y="110" width="52" height="38" rx="4"/></g>
+          <ellipse cx="100" cy="61" rx="42" ry="33" fill="none" stroke="#FF4D1C" stroke-width="7"/>
+        </svg>
+        <svg width="42" height="40" viewBox="0 0 200 190" aria-hidden="true">
+          <g fill="#EDEBE5"><rect x="14" y="42" width="80" height="38" rx="5"/><rect x="106" y="42" width="80" height="38" rx="5"/>
+            <rect x="14" y="110" width="80" height="38" rx="5"/><rect x="106" y="110" width="80" height="38" rx="5"/></g>
+          <ellipse cx="54" cy="61" rx="52" ry="33" fill="none" stroke="#FF4D1C" stroke-width="11"/>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <g fill="#EDEBE5"><rect x="16" y="20" width="76" height="66" rx="8"/><rect x="16" y="114" width="76" height="66" rx="8"/><rect x="108" y="114" width="76" height="66" rx="8"/></g>
+          <ellipse cx="146" cy="53" rx="46" ry="40" fill="#FF4D1C"/>
+        </svg>
+      </div>
+      <span class="lbl">Lockup</span>
+      <div class="lock">
+        <svg width="40" height="34" viewBox="0 0 200 170" aria-hidden="true">
+          <g fill="#EDEBE5"><rect x="10" y="32" width="80" height="38" rx="5"/><rect x="102" y="32" width="80" height="38" rx="5"/>
+            <rect x="10" y="100" width="80" height="38" rx="5"/><rect x="102" y="100" width="80" height="38" rx="5"/></g>
+          <ellipse cx="50" cy="51" rx="52" ry="33" fill="none" stroke="#FF4D1C" stroke-width="11"/>
+        </svg>
+        <span class="wm">Drishtim</span>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">Mono · on paper</span>
+      <div class="sizes">
+        <svg width="95" height="88" viewBox="0 0 200 190" aria-hidden="true">
+          <g fill="rgba(10,10,9,.3)"><rect x="14" y="42" width="52" height="38" rx="4"/><rect x="74" y="42" width="52" height="38" rx="4"/><rect x="134" y="42" width="52" height="38" rx="4"/>
+            <rect x="14" y="110" width="52" height="38" rx="4"/><rect x="74" y="110" width="52" height="38" rx="4"/><rect x="134" y="110" width="52" height="38" rx="4"/></g>
+          <ellipse cx="100" cy="61" rx="42" ry="33" fill="none" stroke="#0A0A09" stroke-width="7"/>
+        </svg>
+        <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+          <g fill="rgba(10,10,9,.3)"><rect x="16" y="20" width="76" height="66" rx="8"/><rect x="16" y="114" width="76" height="66" rx="8"/><rect x="108" y="114" width="76" height="66" rx="8"/></g>
+          <ellipse cx="146" cy="53" rx="46" ry="40" fill="#0A0A09"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <p class="note"><b>The only craft mark about taste rather than gear.</b> "No templates, no stock, no shortcuts" is
+    exactly this picture. Risk: the grease-pencil ellipse needs to stay hand-drawn in feel or it goes corporate.</p>
+</div>
+
+<div class="card">
+  <div class="head"><span class="kick">N</span><h3>Shutter slit</h3>
+    <p>Two focal-plane curtains with a band of light between them. The moment of exposure, not the equipment.</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Mark · on ink</span>
+      <div class="sizes">
+        <svg width="120" height="120" viewBox="0 0 200 200" aria-label="Shutter slit mark">
+          <rect x="16" y="24" width="168" height="62" rx="6" fill="#EDEBE5"/>
+          <rect x="16" y="114" width="168" height="62" rx="6" fill="#EDEBE5"/>
+          <rect x="16" y="92" width="168" height="16" rx="4" fill="#FF4D1C"/>
+        </svg>
+        <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true">
+          <rect x="16" y="24" width="168" height="62" rx="8" fill="#EDEBE5"/>
+          <rect x="16" y="114" width="168" height="62" rx="8" fill="#EDEBE5"/>
+          <rect x="16" y="92" width="168" height="16" rx="5" fill="#FF4D1C"/>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <rect x="10" y="20" width="180" height="66" rx="10" fill="#EDEBE5"/>
+          <rect x="10" y="114" width="180" height="66" rx="10" fill="#EDEBE5"/>
+          <rect x="10" y="92" width="180" height="16" rx="6" fill="#FF4D1C"/>
+        </svg>
+      </div>
+      <span class="lbl">Lockup</span>
+      <div class="lock">
+        <svg width="34" height="34" viewBox="0 0 200 200" aria-hidden="true">
+          <rect x="16" y="24" width="168" height="62" rx="8" fill="#EDEBE5"/>
+          <rect x="16" y="114" width="168" height="62" rx="8" fill="#EDEBE5"/>
+          <rect x="16" y="92" width="168" height="16" rx="5" fill="#FF4D1C"/>
+        </svg>
+        <span class="wm">Drishtim</span>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">Mono · on paper</span>
+      <div class="sizes">
+        <svg width="88" height="88" viewBox="0 0 200 200" aria-hidden="true">
+          <rect x="16" y="24" width="168" height="62" rx="6" fill="#0A0A09"/>
+          <rect x="16" y="114" width="168" height="62" rx="6" fill="#0A0A09"/>
+          <rect x="16" y="92" width="168" height="16" rx="4" fill="rgba(10,10,9,.45)"/>
+        </svg>
+        <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+          <rect x="10" y="20" width="180" height="66" rx="10" fill="#0A0A09"/>
+          <rect x="10" y="114" width="180" height="66" rx="10" fill="#0A0A09"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <p class="note"><b>Boldest shape in every batch.</b> Survives being stamped on anything, at any size, in one colour.
+    Risk: abstract enough that without the wordmark it could be a logo for almost anything.</p>
+</div>
+
+<!-- ================= ROUTE 3 ================= -->
+<div class="route">
+  <h2>3 · Sight meets reach</h2>
+  <p>Fuses the optical form with a signal form. Covers the whole offer — harder to resolve cleanly.</p>
+</div>
+
+<div class="card">
+  <div class="head"><span class="kick">O</span><h3>Broadcast lens</h3>
+    <p>An aperture that transmits. The hexagon opening stays, but waves leave it — capture on the left, reach on the right.</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Mark · on ink</span>
+      <div class="sizes">
+        <svg width="120" height="120" viewBox="0 0 200 200" aria-label="Broadcast lens mark">
+          <circle cx="78" cy="100" r="62" fill="none" stroke="#EDEBE5" stroke-width="9"/>
+          <path d="M78 70 L104 85 L104 115 L78 130 L52 115 L52 85 Z" fill="#FF4D1C"/>
+          <g fill="none" stroke="#EDEBE5" stroke-width="8" stroke-linecap="round">
+            <path d="M154 72 A46 46 0 0 1 154 128"/>
+            <path d="M174 50 A72 72 0 0 1 174 150"/>
+          </g>
+        </svg>
+        <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="74" cy="100" r="60" fill="none" stroke="#EDEBE5" stroke-width="15"/>
+          <path d="M74 74 L96 87 L96 113 L74 126 L52 113 L52 87 Z" fill="#FF4D1C"/>
+          <path d="M158 66 A50 50 0 0 1 158 134" fill="none" stroke="#EDEBE5" stroke-width="15" stroke-linecap="round"/>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="76" cy="100" r="66" fill="#EDEBE5"/>
+          <path d="M76 68 L104 84 L104 116 L76 132 L48 116 L48 84 Z" fill="#0A0A09"/>
+          <path d="M162 62 A54 54 0 0 1 162 138" fill="none" stroke="#EDEBE5" stroke-width="22" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="lbl">Lockup</span>
+      <div class="lock">
+        <svg width="36" height="34" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="74" cy="100" r="60" fill="none" stroke="#EDEBE5" stroke-width="15"/>
+          <path d="M74 74 L96 87 L96 113 L74 126 L52 113 L52 87 Z" fill="#FF4D1C"/>
+          <path d="M158 66 A50 50 0 0 1 158 134" fill="none" stroke="#EDEBE5" stroke-width="15" stroke-linecap="round"/>
+        </svg>
+        <span class="wm">Drishtim</span>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">Mono · on paper</span>
+      <div class="sizes">
+        <svg width="88" height="88" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="78" cy="100" r="62" fill="none" stroke="#0A0A09" stroke-width="9"/>
+          <path d="M78 70 L104 85 L104 115 L78 130 L52 115 L52 85 Z" fill="#0A0A09"/>
+          <g fill="none" stroke="#0A0A09" stroke-width="8" stroke-linecap="round">
+            <path d="M154 72 A46 46 0 0 1 154 128"/><path d="M174 50 A72 72 0 0 1 174 150"/></g>
+        </svg>
+        <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="76" cy="100" r="66" fill="#0A0A09"/>
+          <path d="M76 68 L104 84 L104 116 L76 132 L48 116 L48 84 Z" fill="#EDEBE5"/>
+          <path d="M162 62 A54 54 0 0 1 162 138" fill="none" stroke="#0A0A09" stroke-width="22" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <p class="note"><b>The most complete story.</b> We shoot it, then we make sure people see it — both halves of the
+    business in one mark. Risk: two ideas fighting for room; the arcs are the first thing to break at small sizes.</p>
+</div>
+
+<div class="card">
+  <div class="head"><span class="kick">P</span><h3>Play frame</h3>
+    <p>A play triangle sitting in a frame, with the frame's right edge opening into a grid. Reels are the product; the grid is where they land.</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Mark · on ink</span>
+      <div class="sizes">
+        <svg width="120" height="120" viewBox="0 0 200 200" aria-label="Play frame mark">
+          <rect x="14" y="38" width="108" height="124" rx="8" fill="none" stroke="#EDEBE5" stroke-width="9"/>
+          <path d="M56 74 L96 100 L56 126 Z" fill="#FF4D1C"/>
+          <g fill="#EDEBE5">
+            <rect x="140" y="38" width="22" height="22" rx="4"/><rect x="170" y="38" width="22" height="22" rx="4"/>
+            <rect x="140" y="68" width="22" height="22" rx="4"/><rect x="170" y="68" width="22" height="22" rx="4"/>
+            <rect x="140" y="110" width="22" height="22" rx="4"/><rect x="170" y="110" width="22" height="22" rx="4"/>
+            <rect x="140" y="140" width="22" height="22" rx="4"/><rect x="170" y="140" width="22" height="22" rx="4"/></g>
+        </svg>
+        <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true">
+          <rect x="16" y="34" width="112" height="132" rx="10" fill="none" stroke="#EDEBE5" stroke-width="15"/>
+          <path d="M58 72 L100 100 L58 128 Z" fill="#FF4D1C"/>
+          <g fill="#EDEBE5"><rect x="146" y="42" width="38" height="38" rx="6"/><rect x="146" y="120" width="38" height="38" rx="6"/></g>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <rect x="14" y="14" width="172" height="172" rx="26" fill="#EDEBE5"/>
+          <path d="M76 60 L142 100 L76 140 Z" fill="#0A0A09"/>
+        </svg>
+      </div>
+      <span class="lbl">Lockup</span>
+      <div class="lock">
+        <svg width="40" height="34" viewBox="0 0 200 170" aria-hidden="true">
+          <rect x="12" y="18" width="106" height="134" rx="10" fill="none" stroke="#EDEBE5" stroke-width="14"/>
+          <path d="M52 56 L94 85 L52 114 Z" fill="#FF4D1C"/>
+          <g fill="#EDEBE5"><rect x="140" y="26" width="36" height="36" rx="6"/><rect x="140" y="108" width="36" height="36" rx="6"/></g>
+        </svg>
+        <span class="wm">Drishtim</span>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">Mono · on paper</span>
+      <div class="sizes">
+        <svg width="88" height="88" viewBox="0 0 200 200" aria-hidden="true">
+          <rect x="14" y="38" width="108" height="124" rx="8" fill="none" stroke="#0A0A09" stroke-width="9"/>
+          <path d="M56 74 L96 100 L56 126 Z" fill="#0A0A09"/>
+          <g fill="rgba(10,10,9,.35)">
+            <rect x="140" y="38" width="22" height="22" rx="4"/><rect x="170" y="38" width="22" height="22" rx="4"/>
+            <rect x="140" y="68" width="22" height="22" rx="4"/><rect x="170" y="68" width="22" height="22" rx="4"/>
+            <rect x="140" y="110" width="22" height="22" rx="4"/><rect x="170" y="110" width="22" height="22" rx="4"/>
+            <rect x="140" y="140" width="22" height="22" rx="4"/><rect x="170" y="140" width="22" height="22" rx="4"/></g>
+        </svg>
+        <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+          <rect x="14" y="14" width="172" height="172" rx="26" fill="#0A0A09"/>
+          <path d="M76 60 L142 100 L76 140 Z" fill="#EDEBE5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <p class="note"><b>Names the actual product.</b> You sell ten reels a month — this is the only mark in thirty that
+    shows one. Risk: the play triangle is the single most-used symbol on the internet; the frame-plus-grid is doing
+    all the differentiating work.</p>
+</div>
+
+<!-- ================= ROUTE 4 ================= -->
+<div class="route">
+  <h2>4 · Name-led, no metaphor</h2>
+  <p>Positioning comes from the words and the site, not the symbol. Hardest to get wrong.</p>
+</div>
+
+<div class="card">
+  <div class="head"><span class="kick">Q</span><h3>Caret</h3>
+    <p>The word, then a blinking cursor bar. Digital-native without a single camera reference — and it implies "still typing, still shipping."</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Wordmark · on ink</span>
+      <span class="caret">drishtim<span class="bar"></span></span>
+      <span class="lbl">Small</span>
+      <span class="caret sm">drishtim<span class="bar"></span></span>
+      <span class="lbl">Avatar / favicon</span>
+      <div class="sizes">
+        <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true">
+          <rect width="200" height="200" rx="26" fill="#EDEBE5"/>
+          <text x="62" y="146" fill="#0A0A09" font-family="Archivo, sans-serif" font-size="132" font-weight="800">d</text>
+          <rect x="128" y="52" width="26" height="96" fill="#FF4D1C"/>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <rect width="200" height="200" rx="26" fill="#EDEBE5"/>
+          <text x="52" y="150" fill="#0A0A09" font-family="Archivo, sans-serif" font-size="146" font-weight="800">d</text>
+          <rect x="132" y="48" width="30" height="104" fill="#FF4D1C"/>
+        </svg>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">On paper</span>
+      <span class="caret dark">drishtim<span class="bar"></span></span>
+      <span class="lbl">Mono avatar</span>
+      <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+        <rect width="200" height="200" rx="26" fill="#0A0A09"/>
+        <text x="62" y="146" fill="#EDEBE5" font-family="Archivo, sans-serif" font-size="132" font-weight="800">d</text>
+        <rect x="128" y="52" width="26" height="96" fill="#EDEBE5"/>
+      </svg>
+    </div>
+  </div>
+  <p class="note"><b>Zero cliché risk.</b> No lens, no eye, no grid — and the blink gives you free motion in every
+    video end card. Risk: a caret is a tech/dev signal more than a creative one.</p>
+</div>
+
+<div class="card">
+  <div class="head"><span class="kick">R</span><h3>Extended M</h3>
+    <p>The final stroke of the M keeps going and becomes a rule you can use everywhere — under headlines, along a page edge, across a reel end card.</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Wordmark · on ink</span>
+      <svg width="330" height="70" viewBox="0 0 480 100" aria-label="Drishtim extended M">
+        <text x="0" y="62" fill="#EDEBE5" font-family="Archivo, sans-serif" font-size="62" font-weight="900" letter-spacing="-1">DRISHTIM</text>
+        <path d="M0 82 L476 82" stroke="#FF4D1C" stroke-width="7"/>
+        <path d="M476 82 L476 60" stroke="#FF4D1C" stroke-width="7"/>
+      </svg>
+      <span class="lbl">Small</span>
+      <svg width="180" height="40" viewBox="0 0 480 100" aria-hidden="true">
+        <text x="0" y="62" fill="#EDEBE5" font-family="Archivo, sans-serif" font-size="62" font-weight="900" letter-spacing="-1">DRISHTIM</text>
+        <path d="M0 82 L476 82" stroke="#FF4D1C" stroke-width="10"/>
+      </svg>
+      <span class="lbl">Avatar / favicon</span>
+      <div class="sizes">
+        <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true">
+          <rect width="200" height="200" rx="26" fill="#EDEBE5"/>
+          <text x="100" y="128" text-anchor="middle" fill="#0A0A09" font-family="Archivo, sans-serif" font-size="112" font-weight="900">D</text>
+          <path d="M40 154 L160 154" stroke="#FF4D1C" stroke-width="16"/>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <rect width="200" height="200" rx="26" fill="#EDEBE5"/>
+          <text x="100" y="132" text-anchor="middle" fill="#0A0A09" font-family="Archivo, sans-serif" font-size="122" font-weight="900">D</text>
+          <path d="M34 158 L166 158" stroke="#FF4D1C" stroke-width="20"/>
+        </svg>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">On paper</span>
+      <svg width="250" height="56" viewBox="0 0 480 100" aria-hidden="true">
+        <text x="0" y="62" fill="#0A0A09" font-family="Archivo, sans-serif" font-size="62" font-weight="900" letter-spacing="-1">DRISHTIM</text>
+        <path d="M0 82 L476 82" stroke="#0A0A09" stroke-width="7"/>
+        <path d="M476 82 L476 60" stroke="#0A0A09" stroke-width="7"/>
+      </svg>
+      <span class="lbl">Mono avatar</span>
+      <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+        <rect width="200" height="200" rx="26" fill="#0A0A09"/>
+        <text x="100" y="128" text-anchor="middle" fill="#EDEBE5" font-family="Archivo, sans-serif" font-size="112" font-weight="900">D</text>
+        <path d="M40 154 L160 154" stroke="#EDEBE5" stroke-width="16"/>
+      </svg>
+    </div>
+  </div>
+  <p class="note"><b>A logo that becomes a layout system.</b> The rule is the reusable asset — it can run under any
+    headline on any deliverable and the brand still reads. Risk: without the rule it's just bold type.</p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drishtim — logo concepts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@0;1&family=Noto+Serif+Devanagari:wght@400;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A0A09;--paper:#EDEBE5;--flare:#FF4D1C;--acid:#D8FF3E;
+  --mute:rgba(237,235,229,.55);--hair:rgba(237,235,229,.15);
+  --arch:'Archivo',system-ui,sans-serif;--serif:'Instrument Serif',Georgia,serif;
+  --grot:'Space Grotesk',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ink);color:var(--paper);font-family:var(--grot);font-size:16px;line-height:1.55}
+.wrap{max-width:74rem;margin:0 auto;padding:3.5rem 2rem 6rem}
+h1{font-family:var(--arch);font-variation-settings:'wdth' 120,'wght' 900;font-weight:400;
+  font-size:clamp(2rem,5vw,3.4rem);text-transform:uppercase;letter-spacing:-.04em;line-height:.9}
+h1 em{font-family:var(--serif);font-style:italic;font-variation-settings:normal;text-transform:none;color:var(--flare)}
+.lede{color:var(--mute);max-width:56ch;margin-top:1rem}
+.kick{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--flare)}
+
+.card{border:1px solid var(--hair);border-radius:6px;margin-top:2rem;overflow:hidden}
+.card h2{font-family:var(--arch);font-variation-settings:'wdth' 110,'wght' 800;font-weight:400;
+  font-size:1.5rem;text-transform:uppercase;letter-spacing:-.025em}
+.head{padding:1.5rem 1.8rem;border-bottom:1px solid var(--hair);display:flex;
+  align-items:baseline;gap:1rem;flex-wrap:wrap}
+.head p{color:var(--mute);font-size:.92rem;max-width:46ch;margin-left:auto}
+
+.grid{display:grid;grid-template-columns:1.15fr 1fr}
+.pane{padding:2.2rem 1.8rem;display:flex;flex-direction:column;gap:1.6rem;align-items:flex-start}
+.pane.light{background:var(--paper);color:var(--ink);border-left:1px solid var(--hair)}
+.lbl{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.pane.light .lbl{color:rgba(10,10,9,.5)}
+.sizes{display:flex;align-items:flex-end;gap:1.6rem;flex-wrap:wrap}
+.lock{display:flex;align-items:center;gap:.85rem}
+.wm{font-family:var(--arch);font-variation-settings:'wdth' 116,'wght' 800;font-weight:400;
+  font-size:1.55rem;letter-spacing:.01em;text-transform:uppercase;line-height:1}
+.wm small{font-size:1rem}
+.wm2{font-family:var(--serif);font-size:1.9rem;letter-spacing:-.01em;line-height:1}
+.wm2 i{color:var(--flare)}
+.note{padding:1.2rem 1.8rem;border-top:1px solid var(--hair);font-size:.88rem;color:var(--mute)}
+.note b{color:var(--paper);font-weight:400}
+.warn{color:var(--acid)}
+@media (max-width:820px){.grid{grid-template-columns:1fr}.pane.light{border-left:0;border-top:1px solid var(--hair)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="kick">Drishtim · logo concepts</p>
+<h1>Four ways to draw <em>sight</em></h1>
+<p class="lede">All built on <i>drishti</i> — vision. Site palette: vermilion #FF4D1C, acid #D8FF3E, ink #0A0A09,
+paper #EDEBE5. Each shown large, as a lockup, at 40px, and at 22px favicon size, on both grounds.</p>
+
+<!-- ============ A — APERTURE ============ -->
+<div class="card">
+  <div class="head"><span class="kick">A</span><h2>Aperture</h2>
+    <p>Six iris blades. Literally the organ of sight, already the device on the site, and the hexagonal opening stays readable when tiny.</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Mark · on ink</span>
+      <div class="sizes">
+        <svg width="120" height="120" viewBox="0 0 200 200" aria-label="Drishtim aperture mark">
+          <circle cx="100" cy="100" r="90" fill="none" stroke="#EDEBE5" stroke-width="6"/>
+          <path d="M136 100 L145 22.06 M118 131.18 L190 100 M82 131.18 L145 177.94 M64 100 L55 177.94 M82 68.82 L10 100 M118 68.82 L55 22.06"
+            stroke="#EDEBE5" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <path d="M136 100 L118 131.18 L82 131.18 L64 100 L82 68.82 L118 68.82 Z" fill="#FF4D1C"/>
+        </svg>
+        <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="90" fill="none" stroke="#EDEBE5" stroke-width="10"/>
+          <path d="M136 100 L145 22.06 M118 131.18 L190 100 M82 131.18 L145 177.94 M64 100 L55 177.94 M82 68.82 L10 100 M118 68.82 L55 22.06"
+            stroke="#EDEBE5" stroke-width="10" stroke-linecap="round" fill="none"/>
+          <path d="M136 100 L118 131.18 L82 131.18 L64 100 L82 68.82 L118 68.82 Z" fill="#FF4D1C"/>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="88" fill="#FF4D1C"/>
+          <path d="M136 100 L118 131.18 L82 131.18 L64 100 L82 68.82 L118 68.82 Z" fill="#0A0A09"/>
+        </svg>
+      </div>
+      <span class="lbl">Lockup</span>
+      <div class="lock">
+        <svg width="34" height="34" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="90" fill="none" stroke="#EDEBE5" stroke-width="10"/>
+          <path d="M136 100 L118 131.18 L82 131.18 L64 100 L82 68.82 L118 68.82 Z" fill="#FF4D1C"/>
+        </svg>
+        <span class="wm">Drishtim</span>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">Mono · on paper</span>
+      <div class="sizes">
+        <svg width="90" height="90" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="90" fill="none" stroke="#0A0A09" stroke-width="6"/>
+          <path d="M136 100 L145 22.06 M118 131.18 L190 100 M82 131.18 L145 177.94 M64 100 L55 177.94 M82 68.82 L10 100 M118 68.82 L55 22.06"
+            stroke="#0A0A09" stroke-width="6" stroke-linecap="round" fill="none"/>
+          <path d="M136 100 L118 131.18 L82 131.18 L64 100 L82 68.82 L118 68.82 Z" fill="#0A0A09"/>
+        </svg>
+        <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="88" fill="#0A0A09"/>
+          <path d="M136 100 L118 131.18 L82 131.18 L64 100 L82 68.82 L118 68.82 Z" fill="#EDEBE5"/>
+        </svg>
+      </div>
+      <span class="lbl">Serif wordmark option</span>
+      <span class="wm2">Drish<i>tim</i></span>
+    </div>
+  </div>
+  <p class="note"><b>Strongest at small sizes.</b> The solid hexagon survives a 16px favicon where linework wouldn't.
+    Risk: aperture marks are common in photography branding — the six-blade geometry has to be precise to not read as generic.</p>
+</div>
+
+<!-- ============ B — CROP MARK ============ -->
+<div class="card">
+  <div class="head"><span class="kick">B</span><h2>Crop mark</h2>
+    <p>Four corner brackets and nothing else. The square exists only in your head — the negative space is the logo.</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Mark · on ink</span>
+      <div class="sizes">
+        <svg width="120" height="120" viewBox="0 0 200 200" aria-label="Drishtim crop mark">
+          <g stroke="#EDEBE5" stroke-width="14" fill="none" stroke-linecap="square">
+            <path d="M20 66 L20 20 L66 20"/><path d="M134 20 L180 20 L180 66"/>
+            <path d="M180 134 L180 180 L134 180"/><path d="M66 180 L20 180 L20 134"/>
+          </g>
+          <circle cx="100" cy="100" r="20" fill="#FF4D1C"/>
+        </svg>
+        <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true">
+          <g stroke="#EDEBE5" stroke-width="20" fill="none" stroke-linecap="square">
+            <path d="M22 68 L22 22 L68 22"/><path d="M132 22 L178 22 L178 68"/>
+            <path d="M178 132 L178 178 L132 178"/><path d="M68 178 L22 178 L22 132"/>
+          </g>
+          <circle cx="100" cy="100" r="24" fill="#FF4D1C"/>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <g stroke="#EDEBE5" stroke-width="26" fill="none" stroke-linecap="square">
+            <path d="M26 72 L26 26 L72 26"/><path d="M128 26 L174 26 L174 72"/>
+            <path d="M174 128 L174 174 L128 174"/><path d="M72 174 L26 174 L26 128"/>
+          </g>
+          <circle cx="100" cy="100" r="28" fill="#FF4D1C"/>
+        </svg>
+      </div>
+      <span class="lbl">Lockup — brackets hold the word</span>
+      <div class="lock">
+        <svg width="150" height="46" viewBox="0 0 300 92" aria-hidden="true">
+          <g stroke="#FF4D1C" stroke-width="6" fill="none" stroke-linecap="square">
+            <path d="M4 26 L4 4 L26 4"/><path d="M274 4 L296 4 L296 26"/>
+            <path d="M296 66 L296 88 L274 88"/><path d="M26 88 L4 88 L4 66"/>
+          </g>
+          <text x="150" y="61" text-anchor="middle" fill="#EDEBE5" font-family="Archivo, sans-serif"
+            font-size="40" font-weight="800" letter-spacing="1">DRISHTIM</text>
+        </svg>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">Mono · on paper</span>
+      <div class="sizes">
+        <svg width="90" height="90" viewBox="0 0 200 200" aria-hidden="true">
+          <g stroke="#0A0A09" stroke-width="14" fill="none" stroke-linecap="square">
+            <path d="M20 66 L20 20 L66 20"/><path d="M134 20 L180 20 L180 66"/>
+            <path d="M180 134 L180 180 L134 180"/><path d="M66 180 L20 180 L20 134"/>
+          </g>
+          <circle cx="100" cy="100" r="20" fill="#0A0A09"/>
+        </svg>
+        <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+          <rect width="200" height="200" rx="26" fill="#0A0A09"/>
+          <g stroke="#EDEBE5" stroke-width="20" fill="none" stroke-linecap="square">
+            <path d="M40 82 L40 40 L82 40"/><path d="M118 40 L160 40 L160 82"/>
+            <path d="M160 118 L160 160 L118 160"/><path d="M82 160 L40 160 L40 118"/>
+          </g>
+        </svg>
+      </div>
+      <span class="lbl">Serif wordmark option</span>
+      <span class="wm2">Drish<i>tim</i></span>
+    </div>
+  </div>
+  <p class="note"><b>The most ownable of the four.</b> It's already the site's cursor and hero frame, so logo and interface
+    become one idea. It also animates naturally — corners snap inward on load. Risk: without the dot it reads as a UI element rather than a logo.</p>
+</div>
+
+<!-- ============ C — D AS LENS ============ -->
+<div class="card">
+  <div class="head"><span class="kick">C</span><h2>D as lens</h2>
+    <p>The letter stays a letter, but its counter becomes an aperture. Keeps the mark legibly tied to the name.</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Mark · on ink</span>
+      <div class="sizes">
+        <svg width="120" height="120" viewBox="0 0 200 200" aria-label="Drishtim D lens mark">
+          <path d="M46 24 L96 24 A76 76 0 0 1 96 176 L46 176 Z" fill="#EDEBE5"/>
+          <path d="M96 62 A38 38 0 0 1 96 138 L86 138 L86 62 Z" fill="#0A0A09"/>
+          <path d="M120 100 L110 117.32 L90 117.32 L80 100 L90 82.68 L110 82.68 Z" fill="#FF4D1C"/>
+        </svg>
+        <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M46 24 L96 24 A76 76 0 0 1 96 176 L46 176 Z" fill="#EDEBE5"/>
+          <path d="M120 100 L110 117.32 L90 117.32 L80 100 L90 82.68 L110 82.68 Z" fill="#FF4D1C"/>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M46 24 L96 24 A76 76 0 0 1 96 176 L46 176 Z" fill="#EDEBE5"/>
+          <path d="M124 100 L112 120.78 L88 120.78 L76 100 L88 79.22 L112 79.22 Z" fill="#FF4D1C"/>
+        </svg>
+      </div>
+      <span class="lbl">Lockup</span>
+      <div class="lock">
+        <svg width="34" height="34" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M46 24 L96 24 A76 76 0 0 1 96 176 L46 176 Z" fill="#EDEBE5"/>
+          <path d="M120 100 L110 117.32 L90 117.32 L80 100 L90 82.68 L110 82.68 Z" fill="#FF4D1C"/>
+        </svg>
+        <span class="wm">Drishtim</span>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">Mono · on paper</span>
+      <div class="sizes">
+        <svg width="90" height="90" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M46 24 L96 24 A76 76 0 0 1 96 176 L46 176 Z" fill="#0A0A09"/>
+          <path d="M120 100 L110 117.32 L90 117.32 L80 100 L90 82.68 L110 82.68 Z" fill="#EDEBE5"/>
+        </svg>
+        <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M46 24 L96 24 A76 76 0 0 1 96 176 L46 176 Z" fill="#0A0A09"/>
+          <path d="M124 100 L112 120.78 L88 120.78 L76 100 L88 79.22 L112 79.22 Z" fill="#EDEBE5"/>
+        </svg>
+      </div>
+      <span class="lbl">Serif wordmark option</span>
+      <span class="wm2">Drish<i>tim</i></span>
+    </div>
+  </div>
+  <p class="note"><b>Safest choice.</b> A letter mark is instantly attributable and never needs explaining.
+    Risk: it's also the most expected solution — single-letter roundels are what every small studio lands on.</p>
+</div>
+
+<!-- ============ D — दृ HYBRID ============ -->
+<div class="card">
+  <div class="head"><span class="kick">D</span><h2>दृ hybrid</h2>
+    <p>The Sanskrit root itself, with the shirorekha extended into a frame edge. The most locally meaningful option.</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Mark · on ink</span>
+      <div class="sizes">
+        <svg width="120" height="120" viewBox="0 0 200 200" aria-label="Drishtim Devanagari mark">
+          <path d="M18 34 L182 34" stroke="#FF4D1C" stroke-width="11" stroke-linecap="square"/>
+          <path d="M18 34 L18 60 M182 34 L182 60" stroke="#FF4D1C" stroke-width="11" stroke-linecap="square"/>
+          <text x="100" y="152" text-anchor="middle" fill="#EDEBE5"
+            font-family="'Noto Serif Devanagari', serif" font-size="122" font-weight="600">दृ</text>
+        </svg>
+        <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M18 34 L182 34" stroke="#FF4D1C" stroke-width="18" stroke-linecap="square"/>
+          <text x="100" y="158" text-anchor="middle" fill="#EDEBE5"
+            font-family="'Noto Serif Devanagari', serif" font-size="132" font-weight="600">दृ</text>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <rect width="200" height="200" rx="26" fill="#FF4D1C"/>
+          <text x="100" y="156" text-anchor="middle" fill="#0A0A09"
+            font-family="'Noto Serif Devanagari', serif" font-size="130" font-weight="600">दृ</text>
+        </svg>
+      </div>
+      <span class="lbl">Lockup</span>
+      <div class="lock">
+        <svg width="34" height="34" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M18 34 L182 34" stroke="#FF4D1C" stroke-width="18" stroke-linecap="square"/>
+          <text x="100" y="158" text-anchor="middle" fill="#EDEBE5"
+            font-family="'Noto Serif Devanagari', serif" font-size="132" font-weight="600">दृ</text>
+        </svg>
+        <span class="wm">Drishtim</span>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">Mono · on paper</span>
+      <div class="sizes">
+        <svg width="90" height="90" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M18 34 L182 34" stroke="#0A0A09" stroke-width="11" stroke-linecap="square"/>
+          <path d="M18 34 L18 60 M182 34 L182 60" stroke="#0A0A09" stroke-width="11" stroke-linecap="square"/>
+          <text x="100" y="152" text-anchor="middle" fill="#0A0A09"
+            font-family="'Noto Serif Devanagari', serif" font-size="122" font-weight="600">दृ</text>
+        </svg>
+        <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+          <rect width="200" height="200" rx="26" fill="#0A0A09"/>
+          <text x="100" y="156" text-anchor="middle" fill="#EDEBE5"
+            font-family="'Noto Serif Devanagari', serif" font-size="130" font-weight="600">दृ</text>
+        </svg>
+      </div>
+      <span class="lbl">Serif wordmark option</span>
+      <span class="wm2">Drish<i>tim</i></span>
+    </div>
+  </div>
+  <p class="note"><b>Most meaningful, most constrained.</b> Says "we are from here" instantly to a Marathi speaker.
+    <span class="warn">Two cautions:</span> <code>FACTS.md</code> rules out Devanagari in shipped work — that decision was
+    about captions, so a logo may be an allowed exception, but it needs a deliberate call. And a non-Devanagari reader
+    can't pronounce it, which matters if you ever sell outside Maharashtra. Live text here — would need converting to outlines.</p>
+</div>
+
+</div>
+</body>
+</html>

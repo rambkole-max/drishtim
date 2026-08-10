@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Drishtim">
+  <title>Drishtim</title>
+  <circle cx="78" cy="100" r="62" fill="none" stroke="#EDEBE5" stroke-width="9"/>
+  <path d="M78 70 L104 85 L104 115 L78 130 L52 115 L52 85 Z" fill="#EDEBE5"/>
+  <g fill="none" stroke="#EDEBE5" stroke-width="8" stroke-linecap="round">
+    <path d="M154 72 A46 46 0 0 1 154 128"/>
+    <path d="M174 50 A72 72 0 0 1 174 150"/>
+  </g>
+</svg>

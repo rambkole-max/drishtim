@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drishtim — logo concepts, batch 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A0A09;--paper:#EDEBE5;--flare:#FF4D1C;--acid:#D8FF3E;
+  --mute:rgba(237,235,229,.55);--hair:rgba(237,235,229,.15);
+  --arch:'Archivo',system-ui,sans-serif;--serif:'Instrument Serif',Georgia,serif;
+  --grot:'Space Grotesk',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ink);color:var(--paper);font-family:var(--grot);font-size:16px;line-height:1.55}
+.wrap{max-width:74rem;margin:0 auto;padding:3.5rem 2rem 6rem}
+h1{font-family:var(--arch);font-variation-settings:'wdth' 120,'wght' 900;font-weight:400;
+  font-size:clamp(2rem,5vw,3.4rem);text-transform:uppercase;letter-spacing:-.04em;line-height:.9}
+h1 em{font-family:var(--serif);font-style:italic;font-variation-settings:normal;text-transform:none;color:var(--flare)}
+.lede{color:var(--mute);max-width:58ch;margin-top:1rem}
+.kick{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--flare)}
+.card{border:1px solid var(--hair);border-radius:6px;margin-top:2rem;overflow:hidden}
+.card h2{font-family:var(--arch);font-variation-settings:'wdth' 110,'wght' 800;font-weight:400;
+  font-size:1.5rem;text-transform:uppercase;letter-spacing:-.025em}
+.head{padding:1.5rem 1.8rem;border-bottom:1px solid var(--hair);display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.head p{color:var(--mute);font-size:.92rem;max-width:46ch;margin-left:auto}
+.grid{display:grid;grid-template-columns:1.15fr 1fr}
+.pane{padding:2.2rem 1.8rem;display:flex;flex-direction:column;gap:1.5rem;align-items:flex-start}
+.pane.light{background:var(--paper);color:var(--ink);border-left:1px solid var(--hair)}
+.lbl{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.pane.light .lbl{color:rgba(10,10,9,.5)}
+.sizes{display:flex;align-items:flex-end;gap:1.6rem;flex-wrap:wrap}
+.lock{display:flex;align-items:center;gap:.85rem}
+.wm{font-family:var(--arch);font-variation-settings:'wdth' 116,'wght' 800;font-weight:400;
+  font-size:1.55rem;letter-spacing:.01em;text-transform:uppercase;line-height:1}
+.note{padding:1.2rem 1.8rem;border-top:1px solid var(--hair);font-size:.88rem;color:var(--mute)}
+.note b{color:var(--paper);font-weight:400}
+
+/* E — tittle lens wordmark */
+.tit{font-family:var(--arch);font-variation-settings:'wdth' 112,'wght' 800;font-weight:400;
+  font-size:3.4rem;letter-spacing:-.03em;line-height:1;position:relative;display:inline-block}
+.tit .i{position:relative;display:inline-block}
+.tit .i::after{content:'';position:absolute;left:50%;top:-.30em;width:.20em;height:.20em;
+  transform:translateX(-50%);background:var(--flare);
+  clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%)}
+.tit.sm{font-size:1.6rem}
+.tit.dark,.tit.dark .i::after{color:var(--ink)}
+.tit.dark .i::after{background:var(--ink)}
+@media (max-width:820px){.grid{grid-template-columns:1fr}.pane.light{border-left:0;border-top:1px solid var(--hair)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<p class="kick">Drishtim · logo concepts, batch 2</p>
+<h1>Six more ways to <em>see</em></h1>
+<p class="lede">Wider than batch 1 — a type-led route, a filmstrip route, an eye, a rangefinder, a prism, and a
+pure typographic block. Same palette and same test: large, lockup, 40px, 22px favicon, ink and paper.</p>
+
+<!-- E — TITTLE LENS -->
+<div class="card">
+  <div class="head"><span class="kick">E</span><h2>Tittle lens</h2>
+    <p>No icon at all. The name has two i's — both dots become aperture openings. The logo <em>is</em> the word.</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Wordmark · on ink</span>
+      <span class="tit">dr<span class="i">ı</span>sht<span class="i">ı</span>m</span>
+      <span class="lbl">Small</span>
+      <span class="tit sm">dr<span class="i">ı</span>sht<span class="i">ı</span>m</span>
+      <span class="lbl">Avatar / favicon — one tittle, cropped</span>
+      <div class="sizes">
+        <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true">
+          <rect width="200" height="200" rx="26" fill="#EDEBE5"/>
+          <path d="M100 34 L157 66 L157 134 L100 166 L43 134 L43 66 Z" fill="#FF4D1C"/>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <rect width="200" height="200" rx="26" fill="#EDEBE5"/>
+          <path d="M100 30 L161 64 L161 136 L100 170 L39 136 L39 64 Z" fill="#FF4D1C"/>
+        </svg>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">On paper</span>
+      <span class="tit dark">dr<span class="i">ı</span>sht<span class="i">ı</span>m</span>
+      <span class="lbl">Mono avatar</span>
+      <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+        <rect width="200" height="200" rx="26" fill="#0A0A09"/>
+        <path d="M100 34 L157 66 L157 134 L100 166 L43 134 L43 66 Z" fill="#EDEBE5"/>
+      </svg>
+    </div>
+  </div>
+  <p class="note"><b>The most sophisticated route.</b> Nothing to explain, nothing to bolt on — and the hexagon tittle
+    becomes a standalone icon for the favicon and Instagram avatar. Risk: needs the wordmark to be present to work,
+    so it's weaker when you only have a tiny square.</p>
+</div>
+
+<!-- F — FILM FRAME -->
+<div class="card">
+  <div class="head"><span class="kick">F</span><h2>Film frame</h2>
+    <p>A single 35mm frame with its sprocket holes. Directly the rail already running down the side of the site.</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Mark · on ink</span>
+      <div class="sizes">
+        <svg width="120" height="120" viewBox="0 0 200 200" aria-label="Drishtim film frame mark">
+          <rect x="14" y="30" width="172" height="140" rx="8" fill="none" stroke="#EDEBE5" stroke-width="9"/>
+          <g fill="#EDEBE5">
+            <rect x="30" y="42" width="20" height="14" rx="3"/><rect x="66" y="42" width="20" height="14" rx="3"/>
+            <rect x="114" y="42" width="20" height="14" rx="3"/><rect x="150" y="42" width="20" height="14" rx="3"/>
+            <rect x="30" y="144" width="20" height="14" rx="3"/><rect x="66" y="144" width="20" height="14" rx="3"/>
+            <rect x="114" y="144" width="20" height="14" rx="3"/><rect x="150" y="144" width="20" height="14" rx="3"/>
+          </g>
+          <path d="M100 74 L126 89 L126 119 L100 134 L74 119 L74 89 Z" fill="#FF4D1C"/>
+        </svg>
+        <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true">
+          <rect x="14" y="30" width="172" height="140" rx="8" fill="none" stroke="#EDEBE5" stroke-width="14"/>
+          <g fill="#EDEBE5"><rect x="34" y="44" width="26" height="16" rx="3"/><rect x="140" y="44" width="26" height="16" rx="3"/>
+            <rect x="34" y="140" width="26" height="16" rx="3"/><rect x="140" y="140" width="26" height="16" rx="3"/></g>
+          <path d="M100 72 L128 88 L128 120 L100 136 L72 120 L72 88 Z" fill="#FF4D1C"/>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <rect x="10" y="26" width="180" height="148" rx="10" fill="#EDEBE5"/>
+          <path d="M100 62 L136 82 L136 122 L100 142 L64 122 L64 82 Z" fill="#0A0A09"/>
+        </svg>
+      </div>
+      <span class="lbl">Lockup</span>
+      <div class="lock">
+        <svg width="40" height="34" viewBox="0 0 200 170" aria-hidden="true">
+          <rect x="8" y="12" width="184" height="146" rx="8" fill="none" stroke="#EDEBE5" stroke-width="13"/>
+          <path d="M100 54 L128 70 L128 102 L100 118 L72 102 L72 70 Z" fill="#FF4D1C"/>
+        </svg>
+        <span class="wm">Drishtim</span>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">Mono · on paper</span>
+      <div class="sizes">
+        <svg width="90" height="90" viewBox="0 0 200 200" aria-hidden="true">
+          <rect x="14" y="30" width="172" height="140" rx="8" fill="none" stroke="#0A0A09" stroke-width="9"/>
+          <g fill="#0A0A09">
+            <rect x="30" y="42" width="20" height="14" rx="3"/><rect x="66" y="42" width="20" height="14" rx="3"/>
+            <rect x="114" y="42" width="20" height="14" rx="3"/><rect x="150" y="42" width="20" height="14" rx="3"/>
+            <rect x="30" y="144" width="20" height="14" rx="3"/><rect x="66" y="144" width="20" height="14" rx="3"/>
+            <rect x="114" y="144" width="20" height="14" rx="3"/><rect x="150" y="144" width="20" height="14" rx="3"/></g>
+          <path d="M100 74 L126 89 L126 119 L100 134 L74 119 L74 89 Z" fill="#0A0A09"/>
+        </svg>
+        <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+          <rect x="10" y="26" width="180" height="148" rx="10" fill="#0A0A09"/>
+          <path d="M100 62 L136 82 L136 122 L100 142 L64 122 L64 82 Z" fill="#EDEBE5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <p class="note"><b>Most obviously "we shoot things".</b> Reads instantly to a restaurant owner, which the abstract
+    options don't. Risk: the sprockets clog below about 32px — the favicon has to drop to the solid version shown.</p>
+</div>
+
+<!-- G — EYE -->
+<div class="card">
+  <div class="head"><span class="kick">G</span><h2>Eye</h2>
+    <p>Two arcs, one hexagon pupil. The oldest symbol for sight, drawn geometrically rather than illustratively.</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Mark · on ink</span>
+      <div class="sizes">
+        <svg width="120" height="120" viewBox="0 0 200 200" aria-label="Drishtim eye mark">
+          <path d="M12 100 Q100 22 188 100 Q100 178 12 100 Z" fill="none" stroke="#EDEBE5" stroke-width="9"/>
+          <path d="M100 68 L128 84 L128 116 L100 132 L72 116 L72 84 Z" fill="#FF4D1C"/>
+        </svg>
+        <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M12 100 Q100 22 188 100 Q100 178 12 100 Z" fill="none" stroke="#EDEBE5" stroke-width="15"/>
+          <path d="M100 66 L130 83 L130 117 L100 134 L70 117 L70 83 Z" fill="#FF4D1C"/>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M6 100 Q100 14 194 100 Q100 186 6 100 Z" fill="#EDEBE5"/>
+          <path d="M100 62 L134 81 L134 119 L100 138 L66 119 L66 81 Z" fill="#0A0A09"/>
+        </svg>
+      </div>
+      <span class="lbl">Lockup</span>
+      <div class="lock">
+        <svg width="44" height="30" viewBox="0 0 200 140" aria-hidden="true">
+          <path d="M10 70 Q100 8 190 70 Q100 132 10 70 Z" fill="none" stroke="#EDEBE5" stroke-width="13"/>
+          <path d="M100 44 L124 58 L124 82 L100 96 L76 82 L76 58 Z" fill="#FF4D1C"/>
+        </svg>
+        <span class="wm">Drishtim</span>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">Mono · on paper</span>
+      <div class="sizes">
+        <svg width="90" height="90" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M12 100 Q100 22 188 100 Q100 178 12 100 Z" fill="none" stroke="#0A0A09" stroke-width="9"/>
+          <path d="M100 68 L128 84 L128 116 L100 132 L72 116 L72 84 Z" fill="#0A0A09"/>
+        </svg>
+        <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M6 100 Q100 14 194 100 Q100 186 6 100 Z" fill="#0A0A09"/>
+          <path d="M100 62 L134 81 L134 119 L100 138 L66 119 L66 81 Z" fill="#EDEBE5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <p class="note"><b>Clearest meaning, highest cliché risk.</b> Eye marks are everywhere in media and surveillance
+    branding. The hexagon pupil is what rescues it — it says lens, not iris.</p>
+</div>
+
+<!-- H — RANGEFINDER -->
+<div class="card">
+  <div class="head"><span class="kick">H</span><h2>Split rangefinder</h2>
+    <p>The split-prism focusing circle from a manual camera. Two halves misaligned — you turn the ring until they meet.</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Mark · on ink</span>
+      <div class="sizes">
+        <svg width="120" height="120" viewBox="0 0 200 200" aria-label="Drishtim rangefinder mark">
+          <circle cx="100" cy="100" r="88" fill="none" stroke="#EDEBE5" stroke-width="9"/>
+          <path d="M12 100 L188 100" stroke="#EDEBE5" stroke-width="5"/>
+          <rect x="72" y="34" width="26" height="62" fill="#FF4D1C"/>
+          <rect x="102" y="104" width="26" height="62" fill="#FF4D1C"/>
+        </svg>
+        <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="86" fill="none" stroke="#EDEBE5" stroke-width="16"/>
+          <path d="M14 100 L186 100" stroke="#EDEBE5" stroke-width="9"/>
+          <rect x="66" y="38" width="30" height="56" fill="#FF4D1C"/>
+          <rect x="104" y="106" width="30" height="56" fill="#FF4D1C"/>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="92" fill="#EDEBE5"/>
+          <rect x="62" y="26" width="34" height="66" fill="#0A0A09"/>
+          <rect x="104" y="108" width="34" height="66" fill="#0A0A09"/>
+        </svg>
+      </div>
+      <span class="lbl">Lockup</span>
+      <div class="lock">
+        <svg width="34" height="34" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="86" fill="none" stroke="#EDEBE5" stroke-width="16"/>
+          <rect x="66" y="38" width="30" height="56" fill="#FF4D1C"/>
+          <rect x="104" y="106" width="30" height="56" fill="#FF4D1C"/>
+        </svg>
+        <span class="wm">Drishtim</span>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">Mono · on paper</span>
+      <div class="sizes">
+        <svg width="90" height="90" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="88" fill="none" stroke="#0A0A09" stroke-width="9"/>
+          <path d="M12 100 L188 100" stroke="#0A0A09" stroke-width="5"/>
+          <rect x="72" y="34" width="26" height="62" fill="#0A0A09"/>
+          <rect x="102" y="104" width="26" height="62" fill="#0A0A09"/>
+        </svg>
+        <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="100" cy="100" r="92" fill="#0A0A09"/>
+          <rect x="62" y="26" width="34" height="66" fill="#EDEBE5"/>
+          <rect x="104" y="108" width="34" height="66" fill="#EDEBE5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <p class="note"><b>The best story of the ten.</b> "We're the ones who bring it into focus" is the whole studio
+    positioning in one symbol — and the animation writes itself: the halves slide into alignment on load.
+    Risk: only photographers recognise the reference unaided.</p>
+</div>
+
+<!-- I — PRISM -->
+<div class="card">
+  <div class="head"><span class="kick">I</span><h2>Prism</h2>
+    <p>One beam in, three out. Your tagline is "built once, shipped everywhere" — this is that sentence as a shape.</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Mark · on ink</span>
+      <div class="sizes">
+        <svg width="120" height="120" viewBox="0 0 200 200" aria-label="Drishtim prism mark">
+          <path d="M100 26 L176 172 L24 172 Z" fill="none" stroke="#EDEBE5" stroke-width="9" stroke-linejoin="round"/>
+          <path d="M2 116 L60 116" stroke="#EDEBE5" stroke-width="9" stroke-linecap="round"/>
+          <path d="M132 88 L198 62" stroke="#FF4D1C" stroke-width="8" stroke-linecap="round"/>
+          <path d="M142 112 L198 104" stroke="#EDEBE5" stroke-width="8" stroke-linecap="round"/>
+          <path d="M152 136 L198 148" stroke="#D8FF3E" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+        <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M100 30 L172 168 L28 168 Z" fill="none" stroke="#EDEBE5" stroke-width="16" stroke-linejoin="round"/>
+          <path d="M100 92 L128 108 L128 140 L100 156 L72 140 L72 108 Z" fill="#FF4D1C"/>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M100 22 L182 178 L18 178 Z" fill="#EDEBE5"/>
+          <path d="M100 96 L130 113 L130 147 L100 164 L70 147 L70 113 Z" fill="#0A0A09"/>
+        </svg>
+      </div>
+      <span class="lbl">Lockup</span>
+      <div class="lock">
+        <svg width="34" height="34" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M100 30 L172 168 L28 168 Z" fill="none" stroke="#EDEBE5" stroke-width="16" stroke-linejoin="round"/>
+          <path d="M100 96 L126 111 L126 141 L100 156 L74 141 L74 111 Z" fill="#FF4D1C"/>
+        </svg>
+        <span class="wm">Drishtim</span>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">Mono · on paper</span>
+      <div class="sizes">
+        <svg width="90" height="90" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M100 26 L176 172 L24 172 Z" fill="none" stroke="#0A0A09" stroke-width="9" stroke-linejoin="round"/>
+          <path d="M2 116 L60 116" stroke="#0A0A09" stroke-width="9" stroke-linecap="round"/>
+          <path d="M132 88 L198 62 M142 112 L198 104 M152 136 L198 148" stroke="#0A0A09" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+        <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M100 22 L182 178 L18 178 Z" fill="#0A0A09"/>
+          <path d="M100 96 L130 113 L130 147 L100 164 L70 147 L70 113 Z" fill="#EDEBE5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <p class="note"><b>Says what you sell, not what you own.</b> One shoot becoming reels, stills and ads is the actual
+    product. It's also the only concept here that justifies using all three brand colours at once.
+    Risk: the full ray version needs space — small sizes fall back to triangle-plus-hexagon, which loses the idea.</p>
+</div>
+
+<!-- J — TYPE BLOCK -->
+<div class="card">
+  <div class="head"><span class="kick">J</span><h2>Type block</h2>
+    <p>No symbol at all. The name set tight in two lines inside a rule — a publisher's colophon, not a startup logo.</p></div>
+  <div class="grid">
+    <div class="pane">
+      <span class="lbl">Mark · on ink</span>
+      <div class="sizes">
+        <svg width="120" height="120" viewBox="0 0 200 200" aria-label="Drishtim type block">
+          <rect x="8" y="8" width="184" height="184" fill="none" stroke="#EDEBE5" stroke-width="7"/>
+          <text x="100" y="92" text-anchor="middle" fill="#EDEBE5" font-family="Archivo, sans-serif"
+            font-size="52" font-weight="900" letter-spacing="-1">DRISH</text>
+          <text x="100" y="152" text-anchor="middle" fill="#FF4D1C" font-family="Archivo, sans-serif"
+            font-size="52" font-weight="900" letter-spacing="-1">TIM</text>
+          <path d="M30 108 L170 108" stroke="#EDEBE5" stroke-width="4"/>
+        </svg>
+        <svg width="40" height="40" viewBox="0 0 200 200" aria-hidden="true">
+          <rect x="8" y="8" width="184" height="184" fill="none" stroke="#EDEBE5" stroke-width="14"/>
+          <text x="100" y="98" text-anchor="middle" fill="#EDEBE5" font-family="Archivo, sans-serif"
+            font-size="56" font-weight="900">DR</text>
+          <text x="100" y="158" text-anchor="middle" fill="#FF4D1C" font-family="Archivo, sans-serif"
+            font-size="56" font-weight="900">TM</text>
+        </svg>
+        <svg width="22" height="22" viewBox="0 0 200 200" aria-hidden="true">
+          <rect width="200" height="200" fill="#EDEBE5"/>
+          <text x="100" y="142" text-anchor="middle" fill="#0A0A09" font-family="Archivo, sans-serif"
+            font-size="130" font-weight="900">D</text>
+        </svg>
+      </div>
+      <span class="lbl">Lockup — horizontal</span>
+      <div class="lock">
+        <svg width="170" height="40" viewBox="0 0 340 80" aria-hidden="true">
+          <rect x="3" y="3" width="334" height="74" fill="none" stroke="#EDEBE5" stroke-width="5"/>
+          <text x="24" y="55" fill="#EDEBE5" font-family="Archivo, sans-serif" font-size="42" font-weight="900">DRISH</text>
+          <text x="168" y="55" fill="#FF4D1C" font-family="Archivo, sans-serif" font-size="42" font-weight="900">TIM</text>
+          <text x="284" y="52" fill="rgba(237,235,229,.5)" font-family="Space Grotesk, sans-serif" font-size="13" letter-spacing="2">LATUR</text>
+        </svg>
+      </div>
+    </div>
+    <div class="pane light">
+      <span class="lbl">Mono · on paper</span>
+      <div class="sizes">
+        <svg width="90" height="90" viewBox="0 0 200 200" aria-hidden="true">
+          <rect x="8" y="8" width="184" height="184" fill="none" stroke="#0A0A09" stroke-width="7"/>
+          <text x="100" y="92" text-anchor="middle" fill="#0A0A09" font-family="Archivo, sans-serif"
+            font-size="52" font-weight="900" letter-spacing="-1">DRISH</text>
+          <text x="100" y="152" text-anchor="middle" fill="#0A0A09" font-family="Archivo, sans-serif"
+            font-size="52" font-weight="900" letter-spacing="-1">TIM</text>
+          <path d="M30 108 L170 108" stroke="#0A0A09" stroke-width="4"/>
+        </svg>
+        <svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true">
+          <rect width="200" height="200" fill="#0A0A09"/>
+          <text x="100" y="142" text-anchor="middle" fill="#EDEBE5" font-family="Archivo, sans-serif"
+            font-size="130" font-weight="900">D</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <p class="note"><b>Cheapest to own, hardest to get wrong.</b> No mark to redraw, no icon to explain, and it stamps
+    onto anything — a menu corner, a reel end card, an invoice. Risk: it's a wordmark, so it never becomes a symbol
+    people recognise without reading.</p>
+</div>
+
+</div>
+</body>
+</html>

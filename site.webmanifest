@@ -1,0 +1,13 @@
+{
+  "name": "Drishtim",
+  "short_name": "Drishtim",
+  "description": "Creative studio in Latur. Reels, photography, ads and brand identity.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A09",
+  "theme_color": "#0A0A09",
+  "icons": [
+    { "src": "/brand/favicon/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/brand/favicon/maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

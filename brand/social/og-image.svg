@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Drishtim — creative studio, Latur">
+  <title>Drishtim — creative studio, Latur</title>
+  <rect width="1200" height="630" fill="#0A0A09"/>
+  <g fill="none" stroke="rgba(237,235,229,.10)" stroke-width="1.5">
+    <circle cx="1010" cy="150" r="240"/><circle cx="1010" cy="150" r="170"/><circle cx="1010" cy="150" r="96"/>
+  </g>
+  <g stroke="#FF4D1C" stroke-width="4" fill="none">
+    <path d="M56 104 L56 56 L104 56"/><path d="M1144 104 L1144 56 L1096 56"/>
+    <path d="M56 526 L56 574 L104 574"/><path d="M1144 526 L1144 574 L1096 574"/>
+  </g>
+  <g transform="translate(96 190) scale(0.95)">
+    <circle cx="78" cy="100" r="62" fill="none" stroke="#EDEBE5" stroke-width="9"/>
+    <path d="M78 70 L104 85 L104 115 L78 130 L52 115 L52 85 Z" fill="#FF4D1C"/>
+    <g fill="none" stroke="#EDEBE5" stroke-width="8" stroke-linecap="round">
+      <path d="M154 72 A46 46 0 0 1 154 128"/><path d="M174 50 A72 72 0 0 1 174 150"/></g>
+  </g>
+  <text x="96" y="430" fill="#EDEBE5" font-family="Archivo, Helvetica, Arial, sans-serif"
+        font-size="92" font-weight="800" letter-spacing="-2">DRISHTIM</text>
+  <text x="96" y="490" fill="rgba(237,235,229,.62)" font-family="'Space Grotesk', Helvetica, Arial, sans-serif"
+        font-size="27">Reels, photography and ads. Built once, shipped everywhere.</text>
+  <text x="96" y="548" fill="#FF4D1C" font-family="'Space Grotesk', Helvetica, Arial, sans-serif"
+        font-size="19" letter-spacing="5">LATUR, MAHARASHTRA · DRISHTIM.IN</text>
+</svg>
