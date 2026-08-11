@@ -44,13 +44,10 @@ Respects `prefers-reduced-motion`. Rail, custom cursor and blur effects drop bel
 
 ## ⚠ Before deploying
 
-1. **Set the contact form endpoint.** `index.html` ships with `action="REPLACE_WITH_FORM_ENDPOINT"`.
-   The previous site went live with a placeholder Formspree ID and silently dropped every submission
-   for months. Set a real endpoint and **send a test message** before announcing anything.
-2. **Export a raster OG image.** `brand/social/og-image.svg` must become a PNG or JPG — several
+1. **Export a raster OG image.** `brand/social/og-image.svg` must become a PNG or JPG — several
    platforms do not render SVG link previews.
-3. **Outline the wordmark** for any print or third-party use. See BRAND.md.
-4. **Check performance on a real mid-range Android.** Heavy `backdrop-filter` is the most expensive
+2. **Outline the wordmark** for any print or third-party use. See BRAND.md.
+3. **Check performance on a real mid-range Android.** Heavy `backdrop-filter` is the most expensive
    thing on the page. If it stutters, drop `--blur` from `22px` to `10px` in `:root`.
 
 ## Local preview
