@@ -71,6 +71,10 @@ img{max-width:100%;display:block}
 .ct{font-family:var(--grot);font-size:.85em;color:var(--flare);letter-spacing:0}
 .rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.8,.3,1),transform .8s cubic-bezier(.2,.8,.3,1)}
 .rv.in{opacity:1;transform:none}
+/* Motion-driven cascades: hidden until the module animates them in; .motion-fallback (import failed) and the reduced-motion query both force them visible */
+.srv .row,.team .p,.proc .st,.eng .ec,.work .item,.tags .tag{opacity:0}
+.motion-fallback .srv .row,.motion-fallback .team .p,.motion-fallback .proc .st,
+.motion-fallback .eng .ec,.motion-fallback .work .item,.motion-fallback .tags .tag{opacity:1}
 .sec{padding:5.5rem 0}
 .hd{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
 .hd h2{font-size:clamp(1.9rem,4.6vw,3.1rem)}
@@ -110,7 +114,7 @@ img{max-width:100%;display:block}
   text-align:center;padding:3px 0;transition:color .3s}
 #rail .fr:hover{color:var(--paper)}
 #rail .fr.on{color:var(--acid)}
-#prog{position:fixed;top:0;left:var(--rail);right:0;height:2px;background:var(--flare);z-index:100;width:0}
+#prog{position:fixed;top:0;left:var(--rail);right:0;height:2px;background:var(--flare);z-index:100;transform:scaleX(0);transform-origin:0 50%}
 #cur{position:fixed;z-index:99;pointer-events:none;width:42px;height:42px;transform:translate(-50%,-50%);
   transition:width .25s,height .25s;mix-blend-mode:difference;opacity:0}
 #cur i{position:absolute;width:10px;height:10px;border:1.5px solid #fff}
@@ -372,6 +376,7 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition-duration:.01ms!important}
   .rv{opacity:1;transform:none}.line > span.mv{transform:none}
+  .srv .row,.team .p,.proc .st,.eng .ec,.work .item,.tags .tag{opacity:1}
 }
 </style>
 </head>
@@ -768,32 +773,81 @@ if (burger) {
   });
 }
 
-const prog = document.getElementById('prog');
-addEventListener('scroll', () => {
-  const h = document.body.scrollHeight - innerHeight;
-  prog.style.width = (h > 0 ? (scrollY / h) * 100 : 0) + '%';
-}, { passive: true });
-
-const nio = new IntersectionObserver(es => es.forEach(e => {
-  if (!e.isIntersecting) return;
-  nio.unobserve(e.target);
-  const el = e.target, to = +el.dataset.to, suf = el.dataset.suf || '';
-  if (rm) { el.textContent = to + suf; return; }
-  const t0 = performance.now();
-  (function step(t) {
-    const p = Math.min((t - t0) / 1100, 1);
-    el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))) + suf;
-    if (p < 1) requestAnimationFrame(step);
-  })(t0);
-}), { threshold: .5 });
-document.querySelectorAll('.proof b').forEach(n => nio.observe(n));
-
 function tick() {
   const t = new Date().toLocaleTimeString('en-IN', {
     timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: false });
   document.getElementById('clk').textContent = 'Latur ' + t + ' IST';
 }
 tick(); setInterval(tick, 30000);
+</script>
+
+<script type="module">
+(async () => {
+  const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const prog = document.getElementById('prog');
+  const counters = document.querySelectorAll('.proof b');
+  const cascades = '.srv .row,.team .p,.proc .st,.eng .ec,.work .item';
+
+  // Plain fallback used if the module can't load — keeps every effect working with zero Motion.
+  function fallback() {
+    document.documentElement.classList.add('motion-fallback');
+    if (prog) addEventListener('scroll', () => {
+      const h = document.body.scrollHeight - innerHeight;
+      prog.style.transform = 'scaleX(' + (h > 0 ? scrollY / h : 0) + ')';
+    }, { passive: true });
+    const nio = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting) return;
+      nio.unobserve(e.target);
+      const el = e.target, to = +el.dataset.to, suf = el.dataset.suf || '';
+      if (rm) { el.textContent = to + suf; return; }
+      const t0 = performance.now();
+      (function step(t) {
+        const p = Math.min((t - t0) / 1100, 1);
+        el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))) + suf;
+        if (p < 1) requestAnimationFrame(step);
+      })(t0);
+    }), { threshold: .5 });
+    counters.forEach(n => nio.observe(n));
+  }
+
+  if (rm) {
+    if (prog) prog.style.transform = 'scaleX(1)';
+    counters.forEach(el => { el.textContent = (+el.dataset.to) + (el.dataset.suf || ''); });
+    return;
+  }
+
+  let animate, scroll, inView, stagger;
+  try {
+    ({ animate, scroll, inView, stagger } = await import('/vendor/motion.min.js'));
+  } catch (err) {
+    fallback();
+    return;
+  }
+
+  // Scroll progress rail — 2-arg callback opts into Motion's listener-based scroll tracking
+  // (native `scroll` + `resize` events) rather than relying on ScrollTimeline browser support.
+  if (prog) scroll((progress, info) => {
+    prog.style.transform = 'scaleX(' + Math.min(1, Math.max(0, progress)) + ')';
+  }, { axis: 'y' });
+
+  // Grid items rise in individually as each crosses the viewport, instead of one flat section fade
+  inView(cascades, el => {
+    animate(el, { opacity: [0, 1], y: [18, 0] }, { duration: .6, ease: 'easeOut' });
+  }, { amount: .3 });
+
+  // Hero tags pop in with a stagger once the headline rise-in is settling
+  animate('.tags .tag', { opacity: [0, 1], y: [8, 0] },
+    { delay: stagger(.045, { startDelay: .5 }), duration: .45, ease: 'easeOut' });
+
+  // Counters count up on scroll, driven by Motion's own tween instead of a hand-rolled loop
+  counters.forEach(el => {
+    const to = +el.dataset.to, suf = el.dataset.suf || '';
+    inView(el, () => {
+      animate(0, to, { duration: 1.1, ease: 'easeOut',
+        onUpdate: v => el.textContent = Math.round(v) + suf });
+    }, { amount: .5 });
+  });
+})();
 </script>
 </body>
 </html>

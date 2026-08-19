@@ -3,7 +3,8 @@
 Website and brand assets for **Drishtim** — a founder-led creative studio in Latur, Maharashtra.
 Reels, photography, paid campaigns and brand identity.
 
-Single-page static site. No build step, no dependencies — open `index.html` and it runs.
+Single-page static site. No build step to *run* it — open `index.html` and it works. One vendored
+script (`vendor/motion.min.js`) is pre-built and checked in, so there's still nothing to install.
 
 ---
 
@@ -13,12 +14,40 @@ Single-page static site. No build step, no dependencies — open `index.html` an
 ├── index.html                  the site
 ├── site.webmanifest            PWA manifest
 ├── robots.txt · sitemap.xml
+├── vendor/
+│   ├── motion.min.js           self-hosted Motion build — animate, scroll, inView, stagger
+│   └── LICENSE.md              Motion's MIT licence, carried with the bundle
 └── brand/
     ├── BRAND.md                usage guide — read before using any asset
     ├── logo/                   marks, lockups, wordmark, mono cuts
     ├── favicon/                browser + PWA icons
     ├── social/                 avatar, OG image
     └── concepts-batch-1..3.html   the 30 explored directions, kept for reference
+```
+
+### Motion
+
+`vendor/motion.min.js` is a hand-picked, esbuild-bundled subset of the `motion` package pinned in
+`../package.json` (`animate`, `scroll`, `inView`, `stagger`, `spring`, `easeOut` — the only exports
+`index.html` uses). It's self-hosted rather than pulled from a CDN so the page has zero runtime
+network dependency and the version can't drift silently.
+
+`index.html` imports it in a `<script type="module">` and drives: the scroll-progress rail, the
+staggered reveal of grid rows (services, team, plans, process steps, work items), the hero tag
+pop-in, and the stat counters. If the import fails for any reason, a `catch` block adds
+`.motion-fallback` to `<html>` and falls back to the plain CSS/vanilla-JS versions of the same
+effects — the page never depends on the module succeeding.
+
+**To rebuild after bumping the `motion` version** (run from inside `drishtim-web/`, where its own
+`package.json` / `node_modules` live):
+
+```bash
+npm install                      # picks up the new version from package.json
+echo "export { animate, scroll, inView, stagger, spring, easeOut } from 'motion';" > _motion_entry.mjs
+npx esbuild _motion_entry.mjs --bundle --format=esm --minify --target=es2020 \
+  --outfile=vendor/motion.min.js
+rm _motion_entry.mjs
+cp node_modules/motion/LICENSE.md vendor/LICENSE.md
 ```
 
 ## The logo
@@ -44,11 +73,18 @@ Respects `prefers-reduced-motion`. Rail, custom cursor and blur effects drop bel
 
 ## ⚠ Before deploying
 
-1. **Export a raster OG image.** `brand/social/og-image.svg` must become a PNG or JPG — several
-   platforms do not render SVG link previews.
+1. **Wire the contact form.** `<form action="REPLACE_WITH_FORM_ENDPOINT">` near the bottom of
+   `index.html` is still a placeholder — pick a form backend (Formspree, Getform, a Cloudflare
+   Worker, etc.), paste the real endpoint, and send a test submission before this goes live.
 2. **Outline the wordmark** for any print or third-party use. See BRAND.md.
 3. **Check performance on a real mid-range Android.** Heavy `backdrop-filter` is the most expensive
    thing on the page. If it stutters, drop `--blur` from `22px` to `10px` in `:root`.
+4. **Eyeball the Motion effects in an actual foregrounded tab** (scroll-progress rail, staggered
+   card reveals, counters) — they're driven by `requestAnimationFrame` and were built against the
+   library's source rather than watched end-to-end live, since the sandbox this was built in keeps
+   its tab backgrounded and `rAF` starved. Everything degrades to the plain CSS/JS version via
+   `.motion-fallback` if the import ever fails, so worst case is the old behaviour, not breakage —
+   but give it one real look before shipping.
 
 ## Local preview
 
@@ -68,10 +104,9 @@ point them at the repo root.
 
 ## Content accuracy
 
-Copy on this site reflects decisions recorded in `DRISHTIM-SITE-CHANGE-BRIEF.md` and `FACTS.md`:
-Instagram and Facebook only (no YouTube), rate card v2 (₹29,999 / ₹59,999 / ₹99,999 / ₹44,999),
-Bharat Fine Dine at 4.5★ with 530+ reviews, September slots open.
-
-`FACTS.md` is authoritative. If this site and that file disagree, the file wins — fix the site.
+Copy on this site reflects decisions recorded in `../FACTS.md` and `../DRISHTIM-OFFER.md` —
+channels sold, the rate card, and Bharat Fine Dine's rating and review count. **The figures are
+not repeated here.** `../FACTS.md` is authoritative: if this site and that file disagree, the file
+wins — fix the site.
 
 © 2026 Drishtim · Latur, Maharashtra

@@ -51,28 +51,11 @@ The two-wave version collapses below about 40px. Don't force it; that's what the
 
 ---
 
-## Colour
+## Colour and type
 
-| Name | Hex | Use |
-|---|---|---|
-| Ink | `#0A0A09` | Primary ground |
-| Paper | `#EDEBE5` | Light ground, and the mark's linework on ink |
-| Flare | `#FF4D1C` | The aperture. Accent, one per view |
-| Acid | `#D8FF3E` | Live states only — active nav, hover, current step |
-| Deep | `#0E4A43` | Secondary panels, rarely |
-
-**Rule:** flare is the aperture and the accent. It never becomes a background for large areas of text.
-Acid only ever marks something that is *currently happening*.
-
-## Type
-
-| Role | Face | Setting |
-|---|---|---|
-| Display | **Archivo** | Variable, `wdth` 106–120, `wght` 800–900, tracking −0.03 to −0.045em, uppercase |
-| Voice | **Instrument Serif** | Italic only, for single emphasised words inside display lines |
-| Body / UI | **Space Grotesk** | 400 and 500. Labels at 11px, tracking 0.16–0.2em, uppercase |
-
-Archivo replaced Fraunces in August 2026. Fraunces is retired across the studio.
+⏳ **Open for the current redesign.** The old palette and type system were cleared 19 Aug 2026 to
+give the drishtim-web redesign a clean slate — nothing here is a constraint until new choices are
+made and written back into this file.
 
 ---
 
@@ -83,12 +66,9 @@ Archivo replaced Fraunces in August 2026. Fraunces is retired across the studio.
 
 ## Don't
 
-- Don't recolour the aperture. It is always flare, or mono in single-colour applications
 - Don't add effects — no shadow, no gradient, no glow, no outline
 - Don't stretch. Scale proportionally only
 - Don't rotate the mark. The waves always travel right
-- Don't place the colour mark on a busy photograph — use `mark-mono-white.svg`
-- Don't recreate the wordmark in another typeface
 
 ---
 
