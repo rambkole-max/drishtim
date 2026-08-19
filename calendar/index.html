@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drishtim · Calendar</title>
+<style>
+  :root{
+    --bg:#FBF8F3; --ink:#241A20; --red:#C13437; --muted:#6E655C;
+    --line:#E4DDD2; --card:#FFFFFF; --shade:#F4EFE6;
+    --amber:#B77A16; --green:#3F7D53; --blue:#2F5F7D; --plum:#5C4551;
+    --ram:#241A20; --bipin:#5C4551; --shivam:#2F5F7D;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;height:100%;overflow:hidden}
+  body{background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size:14px;line-height:1.4;-webkit-font-smoothing:antialiased;
+    display:flex;flex-direction:column}
+
+  /* ---------- header ---------- */
+  header{background:var(--ink);color:#fff;flex:0 0 auto}
+  .hrow{display:flex;align-items:center;gap:14px;padding:10px 16px;flex-wrap:wrap}
+  .brand{font-size:15px;font-weight:700;letter-spacing:.3px;white-space:nowrap}
+  .brand span{color:#B4ABA2;font-weight:400}
+  .nav{display:flex;align-items:center;gap:6px;margin-left:6px}
+  .nav button{width:32px;height:32px;border-radius:8px;border:1px solid rgba(255,255,255,.22);
+    background:transparent;color:#fff;font-size:16px;cursor:pointer;line-height:1;font-family:inherit}
+  .nav button:hover{background:rgba(255,255,255,.12)}
+  .mtitle{font-size:19px;font-weight:700;min-width:190px;text-align:center;white-space:nowrap}
+  .spacer{flex:1}
+  .pill{border:1px solid rgba(255,255,255,.22);background:transparent;color:#C9C2BA;
+    border-radius:8px;padding:6px 12px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit;
+    white-space:nowrap}
+  .pill:hover{background:rgba(255,255,255,.1);color:#fff}
+  .pill.on{background:#fff;color:var(--ink);border-color:#fff}
+  .grp{display:flex;gap:4px}
+  .who{display:flex;align-items:center;gap:5px}
+  .dotp{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+  .sub{display:flex;align-items:center;gap:10px;padding:0 16px 10px;flex-wrap:wrap;
+    font-size:11.5px;color:#B4ABA2}
+  .sub b{color:#fff;font-weight:600}
+  .lg{display:flex;align-items:center;gap:5px}
+  .sw{width:10px;height:10px;border-radius:3px;display:inline-block}
+
+  /* ---------- month grid ---------- */
+  main{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;padding:10px 12px 12px}
+  .dow{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;flex:0 0 auto;margin-bottom:6px}
+  .dow div{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;
+    color:var(--muted);text-align:center;padding:2px 0}
+  .grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:1fr;gap:6px;flex:1 1 auto;min-height:0}
+
+  .cell{background:var(--card);border:1px solid var(--line);border-radius:9px;
+    padding:5px 6px;overflow:hidden;display:flex;flex-direction:column;min-height:0;cursor:pointer;
+    transition:border-color .12s}
+  .cell:hover{border-color:var(--muted)}
+  .cell.out{background:transparent;border-color:transparent;cursor:default}
+  .cell.out:hover{border-color:transparent}
+  .cell.today{border-color:var(--ink);border-width:2px;padding:4px 5px}
+  .cell.p-peak{background:#FAE9E9}
+  .cell.p-quiet{background:#EBE7E0}
+  .cell.p-veg{background:#F7EFDF}
+
+  .cn{display:flex;align-items:baseline;gap:6px;flex:0 0 auto}
+  .cn .n{font-size:14px;font-weight:700}
+  .cell.out .n{color:#C9C2BA}
+  .cn .f{font-size:9.5px;font-weight:700;color:var(--red);line-height:1.2;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+  .items{flex:1 1 auto;min-height:0;overflow:hidden;margin-top:3px;display:flex;flex-direction:column;gap:2px}
+
+  .it{font-size:10.5px;line-height:1.25;padding:2px 4px;border-radius:4px;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:0 0 auto}
+  .it.c{color:#fff;font-weight:700}
+  .it.c.static{background:var(--blue)}
+  .it.c.reel{background:var(--red)}
+  .it.c.story{background:var(--amber)}
+  .it.t{background:var(--shade);border-left:3px solid var(--muted);color:var(--ink)}
+  .it.t.Ram{border-left-color:var(--ram)}
+  .it.t.Bipin{border-left-color:var(--bipin)}
+  .it.t.Shivam{border-left-color:var(--shivam)}
+  .it.t.done{opacity:.45;text-decoration:line-through}
+  .it.t.blocked{background:#FBE9E9;color:#9E2124}
+  .it.m{background:var(--ink);color:#fff;font-weight:700}
+  .it.s{background:var(--green);color:#fff;font-weight:700}
+  .more{font-size:10px;color:var(--muted);font-weight:700;padding-left:4px;flex:0 0 auto}
+
+  /* ---------- agenda ---------- */
+  .agenda{flex:1 1 auto;min-height:0;overflow-y:auto;padding-right:4px}
+  .aday{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .aday:last-child{border-bottom:none}
+  .adate{text-align:right}
+  .adate .dn{font-size:26px;font-weight:700;line-height:1}
+  .adate .dw{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+  .adate .ft{font-size:10.5px;color:var(--red);font-weight:700;margin-top:4px;line-height:1.25}
+  .adate.today .dn{color:var(--red)}
+  .arow{display:flex;align-items:flex-start;gap:9px;padding:5px 0}
+  .arow .tag{flex:0 0 auto;font-size:9.5px;font-weight:800;color:#fff;border-radius:4px;padding:2px 6px;margin-top:2px}
+  .arow .bd{flex:1;min-width:0}
+  .arow .t1{font-size:13.5px;font-weight:600}
+  .arow .t2{font-size:11.5px;color:var(--muted);margin-top:1px}
+  .own{flex:0 0 auto;font-size:10px;font-weight:800;color:#fff;border-radius:100px;padding:2px 8px;margin-top:2px}
+  .aempty{color:var(--muted);font-size:12.5px;font-style:italic;padding:4px 0}
+
+  /* ---------- day panel ---------- */
+  .ov{position:fixed;inset:0;background:rgba(36,26,32,.4);display:none;z-index:60}
+  .ov.on{display:block}
+  .panel{position:fixed;top:0;right:0;height:100%;width:min(430px,100%);background:var(--bg);
+    z-index:61;transform:translateX(100%);transition:transform .2s ease;display:flex;flex-direction:column}
+  .panel.on{transform:none}
+  .ph{background:var(--ink);color:#fff;padding:16px 18px;flex:0 0 auto}
+  .ph .d1{font-size:23px;font-weight:700}
+  .ph .d2{font-size:12.5px;color:#C9C2BA;margin-top:3px}
+  .ph .x{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:8px;
+    border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;cursor:pointer;font-size:15px;font-family:inherit}
+  .pb{flex:1 1 auto;overflow-y:auto;padding:14px 18px 24px}
+  .sect{margin-bottom:18px}
+  .sect h4{font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);margin:0 0 8px}
+  .pcard{background:var(--card);border:1px solid var(--line);border-left-width:4px;border-radius:9px;
+    padding:9px 11px;margin-bottom:7px}
+  .pcard.Ram{border-left-color:var(--ram)}
+  .pcard.Bipin{border-left-color:var(--bipin)}
+  .pcard.Shivam{border-left-color:var(--shivam)}
+  .pcard .t{font-size:13.5px;font-weight:600;line-height:1.3}
+  .pcard .c{font-size:11.5px;color:var(--muted);margin-top:3px}
+  .pcard .m{display:flex;gap:6px;align-items:center;margin-top:7px;flex-wrap:wrap}
+  .chip{font-size:9.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
+    padding:2px 7px;border-radius:100px}
+  .c-ink{background:var(--ink);color:#fff}
+  .c-todo{background:var(--shade);color:var(--muted)}
+  .c-doing{background:#E9EFF3;color:#2F5F7D}
+  .c-blocked{background:#FBE9E9;color:#9E2124}
+  .c-review{background:#FBF0DC;color:#8A5B0C}
+  .c-done{background:#E7F1E9;color:#2F6440}
+  .pnone{color:var(--muted);font-size:12.5px;font-style:italic}
+  .shoot{background:#E7F1E9;border:1px solid #BFD9C7;border-radius:9px;padding:10px 12px;margin-bottom:8px}
+  .shoot .n{font-size:14px;font-weight:700;color:#2F6440}
+  .shoot .s{font-size:12px;color:#3F5C48;margin-top:4px;line-height:1.45}
+  .fest{background:#FBE9E9;border:1px solid #E8C7C8;border-radius:9px;padding:10px 12px;margin-bottom:8px}
+  .fest .n{font-size:14px;font-weight:700;color:#9E2124}
+  .fest .s{font-size:12px;color:#9E2124;margin-top:3px;opacity:.85}
+
+  footer{flex:0 0 auto;padding:6px 16px 8px;font-size:11px;color:var(--muted);
+    display:flex;gap:14px;flex-wrap:wrap;align-items:center;border-top:1px solid var(--line)}
+
+  @media (max-width:820px){
+    .grid{grid-auto-rows:minmax(78px,1fr)}
+    main{overflow-y:auto}
+    .mtitle{min-width:auto;font-size:16px}
+    .hrow{gap:8px;padding:8px 10px}
+  }
+  /* Phone: a month cell is too narrow for text, so the grid becomes dots.
+     Tap the day to read it. Date-wise is the default view down here. */
+  @media (max-width:700px){
+    .grid{gap:4px;grid-auto-rows:minmax(62px,1fr)}
+    .cell{padding:4px;border-radius:7px}
+    .cn .n{font-size:12.5px}
+    .cn .f{display:none}
+    .cell .items{flex-direction:row;flex-wrap:wrap;align-content:flex-start;gap:3px;margin-top:4px}
+    .cell .it{width:7px;height:7px;padding:0;border-radius:50%;flex:0 0 auto;
+      text-indent:-999em;line-height:0;border-left:none!important;overflow:hidden}
+    .cell .it.t{background:var(--muted)}
+    .cell .it.s{background:var(--green)}
+    .cell .it.t.Ram{background:var(--ram)}
+    .cell .it.t.Bipin{background:var(--bipin)}
+    .cell .it.t.Shivam{background:var(--shivam)}
+    .cell .it.t.done{opacity:.3}
+    .cell .it.t.blocked{background:var(--red)}
+    .cell .more{display:none!important}
+    .cell.fest-day .n{color:var(--red)}
+    .aday{grid-template-columns:64px 1fr;gap:10px}
+    .adate .dn{font-size:21px}
+  }
+  @media print{
+    header{background:#fff;color:#000}
+    .nav,.pill,.grp,footer,.sub{display:none!important}
+    .mtitle{color:#000}
+    html,body{overflow:visible;height:auto}
+    .cell{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hrow">
+    <div class="brand">Drishtim <span>· Calendar</span></div>
+    <div class="nav">
+      <button id="prev" title="Previous month">‹</button>
+      <div class="mtitle" id="mtitle">—</div>
+      <button id="next" title="Next month">›</button>
+    </div>
+    <button class="pill" id="today">Today</button>
+    <div class="spacer"></div>
+    <div class="grp">
+      <button class="pill on" data-view="month">Month</button>
+      <button class="pill" data-view="agenda">Date-wise</button>
+    </div>
+    <div class="grp" id="people"></div>
+    <div class="grp" id="clients"></div>
+    <button class="pill" id="printBtn">Print</button>
+  </div>
+  <div class="sub" id="sub"></div>
+</header>
+
+<main>
+  <div class="dow" id="dow"></div>
+  <div class="grid" id="grid"></div>
+  <div class="agenda" id="agenda" style="display:none"></div>
+</main>
+
+<footer>
+  <span class="lg"><i class="sw" style="background:var(--blue)"></i>post</span>
+  <span class="lg"><i class="sw" style="background:var(--red)"></i>reel</span>
+  <span class="lg"><i class="sw" style="background:var(--amber)"></i>story</span>
+  <span class="lg"><i class="sw" style="background:var(--ram)"></i>Ram</span>
+  <span class="lg"><i class="sw" style="background:var(--bipin)"></i>Bipin</span>
+  <span class="lg"><i class="sw" style="background:var(--shivam)"></i>Shivam</span>
+  <span class="lg"><i class="sw" style="background:#3F7D53"></i>shoot</span>
+  <span class="lg"><i class="sw" style="background:#FAE9E9;border:1px solid #E8C7C8"></i>peak</span>
+  <span class="lg"><i class="sw" style="background:#F7EFDF;border:1px solid var(--line)"></i>veg / fasting</span>
+  <span class="lg"><i class="sw" style="background:#EBE7E0;border:1px solid var(--line)"></i>quiet period</span>
+  <span style="margin-left:auto">View only · click any day for detail</span>
+</footer>
+
+<div class="ov" id="ov"></div>
+<div class="panel" id="panel">
+  <div class="ph" style="position:relative">
+    <div class="d1" id="pd1">—</div>
+    <div class="d2" id="pd2"></div>
+    <button class="x" id="px">✕</button>
+  </div>
+  <div class="pb" id="pb"></div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var TODAY = "2026-08-19";
+  var OWNER_COLOUR = { Ram:"#241A20", Bipin:"#5C4551", Shivam:"#2F5F7D" };
+  var TYPE_LABEL = { "static":"POST", "reel":"REEL", "story":"STORY" };
+
+  /* ============ FESTIVALS ============ */
+  var FEST = [
+    ["2026-08-24","Shravan Somvar",""],
+    ["2026-08-28","Raksha Bandhan · Narali Purnima","Hero post. Sibling combos, gift hampers"],
+    ["2026-08-31","Shravan Somvar",""],
+    ["2026-09-04","Gokulashtami","Dahi-handi energy, sweets, family dinner"],
+    ["2026-09-07","Shravan Somvar",""],
+    ["2026-09-11","Pola · Shravan ends","Farming-community day, strong in Marathwada"],
+    ["2026-09-14","GANESH CHATURTHI","Modak menu launch. The peak begins"],
+    ["2026-09-17","Jyeshtha Gauri · Marathwada Mukti Sangram Din","Biggest home-catering days. Latur pride — ownable"],
+    ["2026-09-25","Anant Chaturdashi","Visarjan. Biggest crowds. Hero reel"],
+    ["2026-09-26","Pitru Paksha begins","No offers, no celebration. Ad spend paused"],
+    ["2026-10-10","Sarva Pitru Amavasya","Quiet. Nothing promotional"],
+    ["2026-10-11","Navratri — Ghatasthapana","Upvas / farali menu. Nine-colours series"],
+    ["2026-10-20","DUSSEHRA","Fast breaks — the non-veg menu returns after ten weeks"],
+    ["2026-10-25","Kojagiri Purnima","Late-night masala milk, the garden"],
+    ["2026-11-06","Vasubaras · Dhanteras","Hamper pre-orders open"],
+    ["2026-11-07","Narak Chaturdashi","Faral — chakli, chivda, ladoo, karanji"],
+    ["2026-11-08","LAKSHMI PUJAN — DIWALI","Peak of the year. Max ad spend"],
+    ["2026-11-10","Diwali Padwa","Biggest gifting and new-purchase day"],
+    ["2026-11-11","Bhaubeej","Sibling occasion — reuse the Rakhi creative"],
+    ["2026-11-24","Kartik Purnima","Deepdan, quiet festive"],
+    ["2026-11-23","Tulsi Vivah (verify)","Wedding season opens. Catering pipeline"],
+    ["2026-12-23","Datta Jayanti","Devotional, Marathwada-relevant"],
+    ["2026-12-25","Christmas","Corporate parties"],
+    ["2026-12-31","New Year's Eve","NYE banquet. B2B push"],
+    ["2027-01-15","Makar Sankranti","Tilgul, halwa. Haldi-kunku — hall opportunity"],
+    ["2027-01-26","Republic Day","Light touch only"],
+    ["2027-02-11","Vasant Panchami","Saffron and spring menu"],
+    ["2027-02-14","Valentine's Day","Candlelight dining"],
+    ["2027-02-19","Shiv Jayanti (confirm reckoning)","Maharashtra's biggest pride day"],
+    ["2027-03-06","Mahashivratri","Upvas menu, all-night hours"],
+    ["2027-03-21","Holika Dahan","Puran poli, thandai"],
+    ["2027-03-22","Rangwali Holi",""],
+    ["2027-03-26","Rangpanchami (verify)","Bigger than Holi in parts of Marathwada"],
+    ["2027-04-07","GUDI PADWA","Marathi New Year. Shrikhand-puri. Best launch muhurat"],
+    ["2027-04-14","Ambedkar Jayanti","Significant in Latur. Respectful, non-commercial"],
+    ["2027-04-15","Ram Navami","Sunthavda, panha"],
+    ["2027-04-20","Hanuman Jayanti","Devotional, prasad framing"],
+    ["2027-05-09","Akshaya Tritiya","Most auspicious buying day. Wedding bookings"],
+    ["2027-06-18","Vat Purnima","Married-women's occasion, family lunch"],
+    ["2027-07-14","Ashadhi Ekadashi","Pandharpur wari. Statewide fasting — upvas menu"],
+    ["2027-07-18","Guru Purnima","Respect and gratitude framing"]
+  ].map(function(f){ return { date:f[0], name:f[1], note:f[2] }; });
+
+  /* ============ PERIODS ============ */
+  var PERIODS = [
+    { from:"2026-08-13", to:"2026-09-11", kind:"veg",   name:"Shravan — no non-veg" },
+    { from:"2026-09-14", to:"2026-09-25", kind:"peak",  name:"Ganeshotsav — quarter's peak" },
+    { from:"2026-09-26", to:"2026-10-10", kind:"quiet", name:"Pitru Paksha — no offers, ad spend paused" },
+    { from:"2026-10-11", to:"2026-10-19", kind:"veg",   name:"Navratri — fasting, upvas menu" },
+    { from:"2026-10-20", to:"2026-10-20", kind:"peak",  name:"Dussehra — the non-veg menu returns" },
+    { from:"2026-11-06", to:"2026-11-11", kind:"peak",  name:"Diwali — year's revenue peak" },
+    { from:"2026-11-12", to:"2026-11-20", kind:"quiet", name:"Post-Diwali dip — pivot to banquet B2B" },
+    { from:"2026-12-25", to:"2027-01-01", kind:"peak",  name:"Christmas → NYE — corporate and banquet" },
+    { from:"2027-01-16", to:"2027-01-31", kind:"quiet", name:"The flattest fortnight — the one month an offer isn't lazy" },
+    { from:"2027-02-13", to:"2027-02-19", kind:"peak",  name:"Date night + Shiv Jayanti" },
+    { from:"2027-03-01", to:"2027-03-31", kind:"quiet", name:"Board-exam season — families dine out less" },
+    { from:"2027-04-05", to:"2027-04-09", kind:"peak",  name:"Gudi Padwa — best launch muhurat of the year" },
+    { from:"2027-05-07", to:"2027-05-11", kind:"peak",  name:"Akshaya Tritiya — wedding bookings" },
+    { from:"2027-05-15", to:"2027-06-30", kind:"quiet", name:"Marathwada summer — daytime walk-ins collapse. Sell catering" },
+    { from:"2027-07-13", to:"2027-07-15", kind:"veg",   name:"Ashadhi Ekadashi — statewide fasting" }
+  ];
+
+  /* ============ CONTENT ============ */
+  var C = "Bharat Fine Dine", D = "Drishtim";
+  var CONTENT = [
+    ["2026-08-14",C,"static","Independence Day tricolour","Launch post","Published"],
+    ["2026-08-15",C,"story","Launch story","Day 1 of the case-study year","Published"],
+    ["2026-08-17",C,"reel","Buffet / table video","","Published"],
+    ["2026-08-18",C,"static","Paneer Rajwadi","","Published"],
+    ["2026-08-20",C,"static","Pink Mojito","Shravan cooler — the mocktail bar","Scheduled"],
+    ["2026-08-21",C,"story","Live from the shoot","Behind the scenes","Scheduled"],
+    ["2026-08-22",C,"reel","Mocktail 01","Weekend, mocktails, the bar","Scheduled"],
+    ["2026-08-24",C,"static","Biscoff Kalakand","Shravan sweet, ahead of Somvar","Scheduled"],
+    ["2026-08-26",C,"static","Apple Margarita","Mocktail range, second look","Scheduled"],
+    ["2026-08-27",C,"reel","Nutella Almond Reel","Rakhi sweets teaser","Scheduled"],
+    ["2026-08-28",C,"static","Raksha Bandhan","Month hero — sibling combos","Scheduled"],
+    ["2026-08-28",C,"story","Rakhi, live from the floor","Families in, real moment","Scheduled"],
+    ["2026-08-29",C,"static","Pizza Kunafa","Weekend dessert","Scheduled"],
+    ["2026-08-30",C,"reel","Hotel Reel","The property — halls, bar, outdoor","Scheduled"],
+    ["2026-08-31",C,"static","Ganesh teaser","Modak menu coming","To build"],
+    ["2026-08-31",C,"story","Ganesh countdown","Bridge into September","To build"],
+
+    /* ---- September 2026 — Ganesh, then the hole. All veg. ---- */
+    ["2026-09-02",C,"story","Shoot day, live from the kitchen","BTS — modak being made","To build"],
+    ["2026-09-03",C,"static","Blue Lagoon","Last of the Shravan coolers (reserve asset)","Planned"],
+    ["2026-09-04",C,"static","Gokulashtami","Dahi-handi energy, sweets, family dinner","To build"],
+    ["2026-09-11",C,"static","Pola — Shravan ends","Farming-community day, strong in Marathwada. Latur pride","To build"],
+    ["2026-09-12",C,"story","Modak menu — two days out","Countdown","To build"],
+    ["2026-09-14",C,"static","GANESH CHATURTHI — modak menu launch","MONTH HERO. More than one kind, as promised 31 Aug","To build"],
+    ["2026-09-14",C,"reel","Modak, made this morning","Blitz opener, from the 2 Sep shoot","To build"],
+    ["2026-09-17",C,"static","Marathwada Mukti Sangram Din","Latur pride. Nobody else will use it","To build"],
+    ["2026-09-18",C,"static","Jyeshtha Gauri — family thali + home delivery","Peak catering days of the festival","To build"],
+    ["2026-09-19",C,"story","Gauri pujan, live from the floor","Families in, real moment","To build"],
+    ["2026-09-20",C,"reel","The modak counter — every kind we make","Mid-festival. Shot in-house, needs no pandal","To build"],
+    ["2026-09-22",C,"static","Ganesh festive thali","Mid-festival booking push","To build"],
+    ["2026-09-25",C,"reel","Anant Chaturdashi — visarjan day","HERO REEL. Biggest crowds of the festival","To build"],
+    ["2026-09-28",C,"static","Where the produce comes from","Pitru Paksha tone switch — sourcing, no offer","To build"],
+    ["2026-09-30",C,"story","Meet the kitchen — chef profile","People pillar, non-promotional","To build"],
+
+    /* ---- October 2026 — trough, Navratri, then the non-veg relaunch ---- */
+    ["2026-10-01",C,"story","Shoot day 4, live","BTS — the year's biggest bank","To build"],
+    ["2026-10-02",C,"static","The pure-veg thali","Quiet, no offer. 2 Oct is a dry day — no bar content","To build"],
+    ["2026-10-05",C,"static","Meet the team — the tandoor section","People pillar","To build"],
+    ["2026-10-08",C,"static","Paneer, made in-house","Craft and sourcing","To build"],
+    ["2026-10-11",C,"static","Navratri Ghatasthapana — upvas menu launch","HERO. Sabudana, rajgira, the fasting range","To build"],
+    ["2026-10-11",C,"reel","Nine colours — series opener","The engagement device of the month","To build"],
+    ["2026-10-12",C,"story","Colour of the day","Runs daily on the floor; only 4 count against cadence","To build"],
+    ["2026-10-14",C,"static","Sabudana khichdi + rajgira thali","Upvas range, second look","To build"],
+    ["2026-10-17",C,"static","Garba nights — kitchen open late","Occasion + late hours","To build"],
+    ["2026-10-20",C,"static","DUSSEHRA — the full menu returns","HERO. Ten weeks of banked non-veg lands here","To build"],
+    ["2026-10-20",C,"reel","The non-veg relaunch","Most anticipated cut of the year","To build"],
+    ["2026-10-20",C,"story","Dussehra, live from the floor","Families in","To build"],
+    ["2026-10-25",C,"static","Kojagiri Purnima — masala milk, outdoors","Made for the garden space","To build"],
+    ["2026-10-25",C,"story","Kojagiri, late night","Real, on the night","To build"],
+    ["2026-10-30",C,"reel","The property after dark","Bar, halls, outdoor — uses the 3 unused Night View files","To build"],
+
+    /* ---- November 2026 — the year's revenue peak ---- */
+    ["2026-11-05",C,"reel","Diwali at Bharat — the faral kitchen","T-1 teaser, runs against the awareness ad set","To build"],
+    ["2026-11-06",C,"static","Vasubaras / Dhanteras — hamper pre-orders open","HERO 1. Gold-and-gift framing","To build"],
+    ["2026-11-06",C,"story","Hampers, ready at the counter","Urgency, real stock","To build"],
+    ["2026-11-07",C,"static","Narak Chaturdashi — faral","Chakli, chivda, ladoo, karanji","To build"],
+    ["2026-11-08",C,"static","LAKSHMI PUJAN — the premium Diwali thali","HERO 2. PEAK OF THE YEAR","To build"],
+    ["2026-11-08",C,"reel","The premium thali, plated","Hero reel. Max ad spend behind it","To build"],
+    ["2026-11-08",C,"story","Diwali, live through the evening","The room full","To build"],
+    ["2026-11-10",C,"static","Diwali Padwa — couples dining","Biggest new-purchase and gifting day in Maharashtra","To build"],
+    ["2026-11-11",C,"static","Bhaubeej — the sibling table","Reuse the Rakhi creative system, it already worked","To build"],
+    ["2026-11-11",C,"story","Bhaubeej, families in","Real moment","To build"],
+    ["2026-11-15",C,"static","Corporate Diwali hampers","Post-peak pivot to B2B","To build"],
+    ["2026-11-21",C,"static","Tulsi Vivah — wedding season opens","Banquet + catering. Biggest tickets of the year","To build"],
+    ["2026-11-21",C,"reel","Samiksha Hall, dressed for a wedding","The banquet pitch. Needs the shoot-4 setup","To build"],
+    ["2026-11-24",C,"static","Kartik Purnima — deepdan","Quiet festive, close of the season","To build"],
+
+    /* ---- Dec 2026 → Jul 2027 — anchors only. Rest filled on the 25th. ---- */
+    ["2026-12-10",C,"static","NYE package — announced","Announce by the 10th. People book NYE three weeks out","Planned"],
+    ["2026-12-23",C,"static","Datta Jayanti","Devotional, Marathwada-relevant","Planned"],
+    ["2026-12-25",C,"static","Christmas at Bharat","Family tables, corporate parties","Planned"],
+    ["2026-12-31",C,"reel","NYE banquet — the night","PEAK. Corporate, boardrooms, the hall","Planned"],
+    ["2027-01-15",C,"static","Makar Sankranti — tilgul","Also a haldi-kunku hall booking. Sell the hall","Planned"],
+    ["2027-01-26",C,"static","Republic Day","Light touch only","Planned"],
+    ["2027-02-11",C,"static","Vasant Panchami","Saffron and spring menu","Planned"],
+    ["2027-02-14",C,"static","Valentine's — candlelight set menu","HERO. Priced and announced by 1 Feb. Falls on a Sunday","Planned"],
+    ["2027-02-14",C,"reel","Candlelight dining","Sold on the website, never illustrated. Needs shoot 5","Planned"],
+    ["2027-02-19",C,"static","Shiv Jayanti","Maharashtra's biggest pride day. Confirm Latur's reckoning","Planned"],
+    ["2027-03-06",C,"static","Mahashivratri — upvas, late hours","Saturday. A revenue night, not just a post","Planned"],
+    ["2027-03-21",C,"static","Holi — puran poli and thandai","Festival day","Planned"],
+    ["2027-03-26",C,"static","Rangpanchami","Verify date. Bigger than Holi in parts of Marathwada","Planned"],
+    ["2027-04-07",C,"static","GUDI PADWA — new season menu","PEAK. Run it as a relaunch, not a greeting. Shrikhand-puri","Planned"],
+    ["2027-04-07",C,"reel","Gudi Padwa — the new menu","Year's best launch muhurat","Planned"],
+    ["2027-04-14",C,"static","Ambedkar Jayanti","Respectful, non-commercial. No offer, no CTA","Planned"],
+    ["2027-04-15",C,"static","Ram Navami","Sunthavda, panha","Planned"],
+    ["2027-04-20",C,"static","Hanuman Jayanti","Devotional, prasad framing","Planned"],
+    ["2027-05-09",C,"static","Akshaya Tritiya — wedding bookings open","PEAK. Sell bookings, not covers","Planned"],
+    ["2027-05-09",C,"reel","The hall, booked for a wedding","Biggest ticket sizes of the year","Planned"],
+    ["2027-06-18",C,"static","Vat Purnima","Married-women's occasion, family lunch","Planned"],
+    ["2027-07-14",C,"static","Ashadhi Ekadashi — upvas menu","Pandharpur wari. Sell the fast, not a feast","Planned"],
+    ["2027-07-18",C,"static","Guru Purnima","Respect and gratitude framing","Planned"]
+  ].map(function(x){ return {date:x[0],client:x[1],type:x[2],title:x[3],angle:x[4],status:x[5]}; });
+
+  /* ============ TASKS ============ */
+  var TASKS = [
+    [41,C,"Buy softbox, stand, 3 curtains, wooden block","Bill photographed and sent to Ram","Bipin","P0","Todo","2026-08-20"],
+    [42,C,"Confirm borrowed camera + mic in hand","Physically in hand, not arranged","Bipin","P0","Todo","2026-08-20"],
+    [43,C,"Kitchen clearance for Friday shoot","Head chef has said yes to filming prep","Ram","P0","Doing","2026-08-20"],
+    [44,C,"Hall + room details from client","Capacities, dimensions, names","Ram","P0","Blocked","2026-08-20"],
+    [45,C,"Shoot 2 — full day","Shot list covered, non-veg banked for October","Ram","P0","Todo","2026-08-21"],
+    [46,C,"Tagline + theme colours agreed with client","Written down, not verbal","Ram","P0","Todo","2026-08-21"],
+    [47,C,"Send publish queue for approval","All 12 items as one request","Ram","P1","Todo","2026-08-19"],
+    [48,C,"Write the dated baseline block","7 rows + FB screenshot","Ram","P0","Todo","2026-08-19"],
+    [49,C,"Create GA4 property + Meta Pixel","Both IDs in hand","Ram","P1","Todo","2026-08-22"],
+    [50,C,"Paste IDs over 5 REPLACE_ME, redeploy, verify","gtag + fbq defined, dataLayer non-empty","Ram","P1","Todo","2026-08-22"],
+    [51,C,"Connect Buffer, load approved queue","Queue lives in Buffer, not only a doc","Ram","P1","Todo","2026-08-21"],
+    [52,C,"Film BTS on shoot day","2 min raw minimum","Shivam","P2","Todo","2026-08-21"],
+    [53,C,"Shortlist 3 mandals, visit, get rate cards","Rate cards in hand by Sat 23 Aug","Ram","P0","Todo","2026-08-20"],
+    [54,C,"Label 23 food cutouts + 7 mocktails","Every photo matched to menu-data.json","Bipin","P2","Todo","2026-08-25"],
+    [55,C,"Fix Zomato — still Temporarily closed","Open, and NAP address correct","Ram","P2","Todo","2026-08-22"],
+    [56,C,"Report duplicate Justdial + GBP listings","Both reported. Do NOT claim the GBP duplicate","Ram","P2","Todo","2026-08-22"],
+    [57,C,"Test daily-aarti reel format","One cut, repeatable for 11 days","Shivam","P2","Todo","2026-08-25"],
+    [58,C,"Replace og-image.jpg","Says Bharat Fine Dine, not the old mark","Bipin","P2","Todo","2026-08-24"],
+    [60,D,"Team section on drishtim.in","Three people, roles per FACTS.md","Ram","P2","Todo","2026-08-25"],
+    [61,D,"Remove YouTube from drishtim.in","Dropped from the offer 5 Aug","Ram","P2","Todo","2026-08-25"],
+    [62,D,"Cut BTS reel for Drishtim IG","One reel from Friday footage","Shivam","P2","Todo","2026-08-26"],
+
+    [63,C,"Make POST: Pink Mojito","Exported 1080x1350, on-brand, in Ready to Publish","Bipin","P1","Todo","2026-08-19"],
+    [64,C,"Make STORY: Live from the shoot","Shot on the day, vertical","Shivam","P1","Todo","2026-08-19"],
+    [65,C,"Make REEL: Mocktail 01","Cut, subtitled, end card, 1080x1920","Shivam","P1","Todo","2026-08-20"],
+    [66,C,"Make POST: Biscoff Kalakand","Exported 1080x1350, on-brand","Bipin","P1","Todo","2026-08-22"],
+    [67,C,"Make POST: Apple Margarita","Exported 1080x1350, on-brand","Bipin","P1","Todo","2026-08-24"],
+    [68,C,"Make REEL: Nutella Almond Reel","Cut, subtitled, end card, 1080x1920","Shivam","P1","Todo","2026-08-25"],
+    [69,C,"Make POST: Raksha Bandhan","Month hero. Exported 1080x1350","Bipin","P1","Todo","2026-08-26"],
+    [70,C,"Make STORY: Rakhi, live from the floor","Shot on the day, vertical","Shivam","P1","Todo","2026-08-26"],
+    [71,C,"Make POST: Pizza Kunafa","Exported 1080x1350, on-brand","Bipin","P1","Todo","2026-08-27"],
+    [72,C,"Make REEL: Hotel Reel","Re-export 50→30fps, new hook, subtitles, end card","Shivam","P1","Todo","2026-08-28"],
+    [73,C,"Make POST: Ganesh teaser","Exported 1080x1350, on-brand","Bipin","P1","Todo","2026-08-29"],
+    [74,C,"Make STORY: Ganesh countdown","Shot on the day, vertical","Shivam","P1","Todo","2026-08-29"]
+  ].map(function(t){
+    return {id:t[0],client:t[1],task:t[2],criteria:t[3],owner:t[4],priority:t[5],status:t[6],due:t[7]};
+  });
+
+  /* ============ MILESTONES ============ */
+  var MILES = [
+    ["2026-08-20","Hard date · kit bought"],
+    ["2026-08-21","Shoot 2 — full day at Bharat"],
+    ["2026-08-25","Ganesh plan drafted"],
+    ["2026-08-31","Retire August · draft September queue"],
+    ["2026-09-01","Sprint Rakhi-build ends"],
+    ["2026-09-02","Sprint Ganesh-prep starts"],
+    ["2026-09-10","PAN + current account open"],
+    ["2026-09-15","First invoice — ₹25,000"],
+
+    ["2026-09-04","Ganesh block sent for approval"],
+    ["2026-09-07","Ganesh approved, exported, in Buffer"],
+    ["2026-09-11","Ganesh ad sets built · ₹30,000"],
+    ["2026-09-25","Draft the October queue"],
+    ["2026-09-26","Ad spend to ₹0 — Pitru Paksha"],
+
+    ["2026-10-01","Navratri + Dussehra block sent"],
+    ["2026-10-04","Approved and exported"],
+    ["2026-10-11","Ad spend resumes · ₹24,000"],
+    ["2026-10-13","Diwali brief signed off with the kitchen"],
+    ["2026-10-25","Draft the November queue"],
+    ["2026-10-30","Diwali approved, loaded, ads built"],
+
+    ["2026-11-01","Diwali awareness ads live"],
+    ["2026-11-12","Price the wedding / banquet package"],
+    ["2026-11-25","Draft December · decide the NYE package"],
+    ["2026-12-05","NYE creative + pricing approved"],
+    ["2026-12-10","NYE announced — hard date"],
+
+    ["2027-01-05","January offer decided with the kitchen"],
+    ["2027-01-08","Sankranti approved"],
+    ["2027-01-20","Case study packaged — Aug to Diwali"],
+    ["2027-01-25","Quarterly strategy day"],
+    ["2027-02-01","Valentine's set menu announced"],
+    ["2027-02-12","Shiv Jayanti approved"],
+    ["2027-02-15","Annual-retainer pitch"],
+    ["2027-03-14","Holi approved"],
+    ["2027-03-31","Gudi Padwa approved — T-7"],
+    ["2027-04-25","Wedding package priced · renewal opens"],
+    ["2027-05-20","Decide the sixth shoot day"],
+    ["2027-06-15","Annual review · rebuild the Marathi calendar"],
+    ["2027-07-15","Renewal signed — hard date"],
+    ["2027-08-14","Contract year ends"]
+  ].map(function(m){ return {date:m[0], text:m[1]}; });
+
+  /* ============ SHOOT WINDOWS ============
+     Windows, not fixed days. Pick the day inside each with the kitchen. */
+  var SHOOTS = [
+    { from:"2026-08-21", to:"2026-08-21", n:"Shoot 2", fixed:true,
+      note:"Restaurant story, staff, chef, kitchen, bar, halls. Non-veg banked for 20 Oct." },
+    { from:"2026-09-01", to:"2026-09-04", n:"Shoot 3 window",
+      note:"Must be before 7 Sep — Ganesh creative needs 7 days. Modak (more than one kind), festive thali, Gauri family table, aarti B-roll." },
+    { from:"2026-09-28", to:"2026-10-09", n:"Shoot 4 window — the big one",
+      note:"Inside Pitru Paksha: quiet room, staff free, nothing publishing. Banks the FULL non-veg menu, upvas, Diwali faral + premium thali, hampers, Kojagiri night, and Samiksha Hall + Board Rooms dressed. Protect this above everything else." },
+    { from:"2027-02-01", to:"2027-02-12", n:"Shoot 5 window",
+      note:"Candlelight / date-night evening set, Shiv Jayanti, Mahashivratri upvas, Holi, Gudi Padwa, wedding halls, summer coolers. Alternative: mid-March if you'd rather cover Apr–Jun." },
+    { from:"2027-05-10", to:"2027-05-21", n:"Shoot 6 — paid add-on, optional",
+      note:"₹10,000 for 4 hours. Not in the retainer. Without it the library runs thin from mid-May. Pitch it with the renewal." }
+  ];
+  function shootOn(ds){
+    for(var i=0;i<SHOOTS.length;i++) if(ds>=SHOOTS[i].from && ds<=SHOOTS[i].to) return SHOOTS[i];
+    return null;
+  }
+
+  /* ============ AD SPEND — ₹2,18,000 for the year ============ */
+  var ADS = {
+    "2026-09":"₹30,000 · 12–25 Sep only", "2026-10":"₹24,000 · nothing before 11 Oct",
+    "2026-11":"₹40,000 · 4–12 Nov, then the banquet set from 21 Nov",
+    "2026-12":"₹26,000 · from 10 Dec", "2027-01":"₹16,000 · 8–16 Jan",
+    "2027-02":"₹20,000 · 4–15 Feb, 17–19 Feb", "2027-03":"₹14,000",
+    "2027-04":"₹18,000 · 31 Mar – 8 Apr", "2027-05":"₹18,000",
+    "2027-06":"₹6,000 · always-on only", "2027-07":"₹6,000"
+  };
+
+  /* ============ helpers ============ */
+  var MON = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+  var MONS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var DOWS = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+
+  function pad(n){ return (n<10?"0":"")+n; }
+  function key(y,m,d){ return y+"-"+pad(m+1)+"-"+pad(d); }
+  function parse(s){ var p=s.split("-"); return new Date(+p[0], +p[1]-1, +p[2]); }
+  function pretty(s){ var p=s.split("-"); return (+p[2])+" "+MONS[+p[1]-1]; }
+  function dowOf(s){ var d=parse(s).getDay(); return DOWS[(d+6)%7]; }
+  function longDow(s){ return ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][parse(s).getDay()]; }
+
+  var state = {
+    y: 2026, m: 7,             // August 2026
+    // On a phone the month grid is dots only, so open on the readable view.
+    view: (window.innerWidth <= 700 ? "agenda" : "month"),
+    person: "All",
+    client: "All"
+  };
+
+  function festOn(ds){ for(var i=0;i<FEST.length;i++) if(FEST[i].date===ds) return FEST[i]; return null; }
+  function periodOn(ds){
+    for(var i=0;i<PERIODS.length;i++){
+      if(ds>=PERIODS[i].from && ds<=PERIODS[i].to) return PERIODS[i];
+    }
+    return null;
+  }
+  function passClient(x){ return state.client==="All" || x.client===state.client; }
+  function passPerson(t){ return state.person==="All" || t.owner===state.person; }
+
+  function contentOn(ds){
+    return CONTENT.filter(function(c){ return c.date===ds && passClient(c); });
+  }
+  function tasksOn(ds){
+    return TASKS.filter(function(t){ return t.due===ds && passClient(t) && passPerson(t); })
+      .sort(function(a,b){ return a.priority<b.priority?-1:1; });
+  }
+  function milesOn(ds){ return MILES.filter(function(m){ return m.date===ds; }); }
+
+  /* ============ render: filters ============ */
+  function buildFilters(){
+    var pw = document.getElementById("people");
+    pw.innerHTML = "";
+    ["All","Ram","Bipin","Shivam"].forEach(function(p){
+      var b = document.createElement("button");
+      b.className = "pill" + (state.person===p ? " on" : "");
+      if(p==="All"){ b.textContent = "Everyone"; }
+      else {
+        var w = document.createElement("span"); w.className="who";
+        var d = document.createElement("i"); d.className="dotp"; d.style.background = OWNER_COLOUR[p];
+        w.appendChild(d); w.appendChild(document.createTextNode(p));
+        b.appendChild(w);
+      }
+      b.onclick = function(){ state.person = p; render(); };
+      pw.appendChild(b);
+    });
+
+    var cw = document.getElementById("clients");
+    cw.innerHTML = "";
+    ["All", C, D].forEach(function(c){
+      var b = document.createElement("button");
+      b.className = "pill" + (state.client===c ? " on" : "");
+      b.textContent = c==="All" ? "All clients" : (c===C ? "Bharat" : "Drishtim");
+      b.onclick = function(){ state.client = c; render(); };
+      cw.appendChild(b);
+    });
+  }
+
+  /* ============ render: month grid ============ */
+  function renderMonth(){
+    document.getElementById("dow").style.display = "";
+    document.getElementById("grid").style.display = "";
+    document.getElementById("agenda").style.display = "none";
+
+    var dw = document.getElementById("dow");
+    dw.innerHTML = "";
+    DOWS.forEach(function(d){ var e=document.createElement("div"); e.textContent=d; dw.appendChild(e); });
+
+    var g = document.getElementById("grid");
+    g.innerHTML = "";
+
+    var first = new Date(state.y, state.m, 1);
+    var startOffset = (first.getDay()+6)%7;          // Monday-first
+    var daysInMonth = new Date(state.y, state.m+1, 0).getDate();
+    var prevDays = new Date(state.y, state.m, 0).getDate();
+    var totalCells = Math.ceil((startOffset+daysInMonth)/7)*7;
+    var trimQueue = [];
+
+    for(var i=0;i<totalCells;i++){
+      var dayNum, mm = state.m, yy = state.y, outside = false;
+      if(i < startOffset){ dayNum = prevDays - startOffset + 1 + i; mm = state.m-1; outside = true; }
+      else if(i >= startOffset+daysInMonth){ dayNum = i - startOffset - daysInMonth + 1; mm = state.m+1; outside = true; }
+      else { dayNum = i - startOffset + 1; }
+      if(mm<0){ mm=11; yy--; } if(mm>11){ mm=0; yy++; }
+      var ds = key(yy, mm, dayNum);
+
+      var cell = document.createElement("div");
+      cell.className = "cell" + (outside ? " out" : "");
+      if(!outside){
+        var per = periodOn(ds);
+        if(per) cell.className += " p-" + per.kind;
+        if(ds === TODAY) cell.className += " today";
+      }
+
+      var head = document.createElement("div"); head.className = "cn";
+      var n = document.createElement("div"); n.className = "n"; n.textContent = dayNum;
+      head.appendChild(n);
+      var f = festOn(ds);
+      if(f && !outside){
+        cell.className += " fest-day";
+        var fe = document.createElement("div"); fe.className="f";
+        fe.textContent = f.name.split("·")[0].trim();
+        fe.title = f.name;
+        head.appendChild(fe);
+      }
+      cell.appendChild(head);
+
+      if(!outside){
+        var box = document.createElement("div"); box.className = "items";
+        var all = [];
+        var sh = shootOn(ds);
+        if(sh) all.push({k:"s", label:(sh.fixed ? "● " : "○ ") + sh.n});
+        milesOn(ds).forEach(function(m){ all.push({k:"m", label:m.text}); });
+        contentOn(ds).forEach(function(c){ all.push({k:"c", type:c.type, label:(TYPE_LABEL[c.type]||"POST")+" · "+c.title}); });
+        tasksOn(ds).forEach(function(t){ all.push({k:"t", owner:t.owner, status:t.status, label:"#"+t.id+" "+t.task}); });
+
+        all.forEach(function(item){
+          var e = document.createElement("div");
+          if(item.k==="s") e.className = "it s";
+          else if(item.k==="m") e.className = "it m";
+          else if(item.k==="c") e.className = "it c " + item.type;
+          else e.className = "it t " + item.owner + (item.status==="Done"?" done":"") + (item.status==="Blocked"?" blocked":"");
+          e.textContent = item.label;
+          e.title = item.label;
+          box.appendChild(e);
+        });
+        var more = document.createElement("div"); more.className="more"; more.style.display="none";
+        box.appendChild(more);
+        cell.appendChild(box);
+        trimQueue.push({ box: box, more: more, total: all.length });
+        (function(d){ cell.onclick = function(){ openDay(d); }; })(ds);
+      }
+      g.appendChild(cell);
+    }
+
+    /* Trim each cell to what actually fits, so "+N more" is never clipped.
+       Runs after layout, so it measures real heights. */
+    trimQueue.forEach(function(q){
+      if(!q.total) return;
+      var items = [].slice.call(q.box.querySelectorAll(".it"));
+      var hidden = 0;
+      // First pass: does everything fit as-is?
+      if(q.box.scrollHeight <= q.box.clientHeight + 1) return;
+      // Reveal the counter, then peel items off the end until it fits.
+      q.more.style.display = "";
+      while(items.length && q.box.scrollHeight > q.box.clientHeight + 1){
+        var last = items.pop();
+        last.style.display = "none";
+        hidden++;
+        q.more.textContent = "+" + hidden + " more";
+      }
+      if(hidden === 0){ q.more.style.display = "none"; }
+      else { q.more.textContent = "+" + hidden + " more"; }
+    });
+  }
+
+  /* ============ render: agenda ============ */
+  function renderAgenda(){
+    document.getElementById("dow").style.display = "none";
+    document.getElementById("grid").style.display = "none";
+    var a = document.getElementById("agenda");
+    a.style.display = "";
+    a.innerHTML = "";
+
+    var daysInMonth = new Date(state.y, state.m+1, 0).getDate();
+    var any = false;
+
+    for(var d=1; d<=daysInMonth; d++){
+      var ds = key(state.y, state.m, d);
+      var cs = contentOn(ds), ts = tasksOn(ds), ms = milesOn(ds), f = festOn(ds), sh = shootOn(ds);
+      if(!cs.length && !ts.length && !ms.length && !f && !sh) continue;
+      any = true;
+
+      var row = document.createElement("div"); row.className = "aday";
+      var left = document.createElement("div");
+      left.className = "adate" + (ds===TODAY ? " today" : "");
+      var dn = document.createElement("div"); dn.className="dn"; dn.textContent = d;
+      var dwv = document.createElement("div"); dwv.className="dw"; dwv.textContent = dowOf(ds);
+      left.appendChild(dn); left.appendChild(dwv);
+      if(f){ var ft=document.createElement("div"); ft.className="ft"; ft.textContent=f.name; left.appendChild(ft); }
+      row.appendChild(left);
+
+      var right = document.createElement("div");
+      if(sh){ right.appendChild(arow("SHOOT", "#3F7D53", sh.n, sh.note, null)); }
+      ms.forEach(function(m){
+        right.appendChild(arow("MILE", "#241A20", m.text, "", null));
+      });
+      cs.forEach(function(c){
+        right.appendChild(arow(TYPE_LABEL[c.type]||"POST",
+          c.type==="reel"?"#C13437":(c.type==="story"?"#B77A16":"#2F5F7D"),
+          c.title, c.angle + (c.status?"  ·  "+c.status:""), null));
+      });
+      ts.forEach(function(t){
+        right.appendChild(arow(t.priority, "#6E655C", "#"+t.id+"  "+t.task, t.criteria, t.owner));
+      });
+      if(!ms.length && !cs.length && !ts.length && !sh){
+        var e=document.createElement("div"); e.className="aempty"; e.textContent="Festival only — nothing scheduled.";
+        right.appendChild(e);
+      }
+      row.appendChild(right);
+      a.appendChild(row);
+    }
+
+    if(!any){
+      var e = document.createElement("div");
+      e.className = "aempty";
+      e.style.padding = "30px 0";
+      e.textContent = "Nothing on the calendar for this month with the current filters.";
+      a.appendChild(e);
+    }
+  }
+
+  function arow(tag, colour, t1, t2, owner){
+    var r = document.createElement("div"); r.className = "arow";
+    var g = document.createElement("div"); g.className="tag"; g.style.background = colour; g.textContent = tag;
+    r.appendChild(g);
+    var b = document.createElement("div"); b.className="bd";
+    var a1 = document.createElement("div"); a1.className="t1"; a1.textContent = t1; b.appendChild(a1);
+    if(t2){ var a2=document.createElement("div"); a2.className="t2"; a2.textContent=t2; b.appendChild(a2); }
+    r.appendChild(b);
+    if(owner){
+      var o = document.createElement("div"); o.className="own";
+      o.style.background = OWNER_COLOUR[owner] || "#6E655C";
+      o.textContent = owner;
+      r.appendChild(o);
+    }
+    return r;
+  }
+
+  /* ============ day panel ============ */
+  function openDay(ds){
+    document.getElementById("pd1").textContent = (+ds.split("-")[2]) + " " + MON[+ds.split("-")[1]-1] + " " + ds.split("-")[0];
+    var per = periodOn(ds);
+    document.getElementById("pd2").textContent = longDow(ds) + (per ? "  ·  " + per.name : "");
+
+    var b = document.getElementById("pb");
+    b.innerHTML = "";
+
+    var f = festOn(ds);
+    if(f){
+      var fb = document.createElement("div"); fb.className="fest";
+      var fn = document.createElement("div"); fn.className="n"; fn.textContent = f.name; fb.appendChild(fn);
+      if(f.note){ var fs=document.createElement("div"); fs.className="s"; fs.textContent=f.note; fb.appendChild(fs); }
+      b.appendChild(fb);
+    }
+
+    var sh = shootOn(ds);
+    if(sh){
+      var sb = document.createElement("div"); sb.className="shoot";
+      var sn = document.createElement("div"); sn.className="n";
+      sn.textContent = sh.n + (sh.fixed ? "" : "  ·  " + (+sh.from.split("-")[2]) + "–" + (+sh.to.split("-")[2]) + " " + MON[+sh.to.split("-")[1]-1]);
+      sb.appendChild(sn);
+      var ss = document.createElement("div"); ss.className="s"; ss.textContent = sh.note; sb.appendChild(ss);
+      b.appendChild(sb);
+    }
+
+    var ms = milesOn(ds);
+    if(ms.length){
+      b.appendChild(sect("Milestone", ms.map(function(m){
+        var c=document.createElement("div"); c.className="pcard";
+        var t=document.createElement("div"); t.className="t"; t.textContent=m.text; c.appendChild(t);
+        return c;
+      })));
+    }
+
+    var cs = contentOn(ds);
+    b.appendChild(sect("Going out — " + cs.length, cs.length ? cs.map(function(c){
+      var card=document.createElement("div"); card.className="pcard";
+      card.style.borderLeftColor = c.type==="reel"?"#C13437":(c.type==="story"?"#B77A16":"#2F5F7D");
+      var t=document.createElement("div"); t.className="t"; t.textContent=c.title; card.appendChild(t);
+      if(c.angle){ var a=document.createElement("div"); a.className="c"; a.textContent=c.angle; card.appendChild(a); }
+      var m=document.createElement("div"); m.className="m";
+      m.appendChild(chip(TYPE_LABEL[c.type]||"POST","c-ink"));
+      if(c.status) m.appendChild(chip(c.status, c.status==="Published"?"c-done":"c-todo"));
+      card.appendChild(m);
+      return card;
+    }) : null));
+
+    var ts = tasksOn(ds);
+    b.appendChild(sect("Due — " + ts.length, ts.length ? ts.map(function(t){
+      var card=document.createElement("div"); card.className="pcard "+t.owner;
+      var h=document.createElement("div"); h.className="t"; h.textContent="#"+t.id+"  "+t.task; card.appendChild(h);
+      if(t.criteria){ var c=document.createElement("div"); c.className="c"; c.textContent="Done = "+t.criteria; card.appendChild(c); }
+      var m=document.createElement("div"); m.className="m";
+      m.appendChild(chip(t.priority,"c-ink"));
+      m.appendChild(chip(t.status,"c-"+t.status.toLowerCase()));
+      var o=document.createElement("span"); o.className="chip";
+      o.style.background=OWNER_COLOUR[t.owner]; o.style.color="#fff"; o.textContent=t.owner;
+      m.appendChild(o);
+      if(t.client!==C){ m.appendChild(chip(t.client,"c-todo")); }
+      card.appendChild(m);
+      return card;
+    }) : null));
+
+    document.getElementById("ov").classList.add("on");
+    document.getElementById("panel").classList.add("on");
+  }
+  function sect(title, nodes){
+    var s = document.createElement("div"); s.className="sect";
+    var h = document.createElement("h4"); h.textContent = title; s.appendChild(h);
+    if(!nodes){ var p=document.createElement("div"); p.className="pnone"; p.textContent="Nothing."; s.appendChild(p); }
+    else nodes.forEach(function(n){ s.appendChild(n); });
+    return s;
+  }
+  function chip(txt, cls){
+    var e=document.createElement("span"); e.className="chip "+cls; e.textContent=txt; return e;
+  }
+  function closeDay(){
+    document.getElementById("ov").classList.remove("on");
+    document.getElementById("panel").classList.remove("on");
+  }
+
+  /* ============ subheader ============ */
+  function renderSub(){
+    var s = document.getElementById("sub");
+    s.innerHTML = "";
+    var daysInMonth = new Date(state.y, state.m+1, 0).getDate();
+    var nC=0, nT=0, byOwner={Ram:0,Bipin:0,Shivam:0};
+    for(var d=1;d<=daysInMonth;d++){
+      var ds = key(state.y, state.m, d);
+      nC += contentOn(ds).length;
+      tasksOn(ds).forEach(function(t){ nT++; if(byOwner[t.owner]!==undefined) byOwner[t.owner]++; });
+    }
+    var mkey = state.y + "-" + String(state.m+1).padStart(2,"0");
+    var bits = [];
+    // Dec 2026 onward is anchors only — say so, so a low count doesn't read as a gap.
+    if(mkey >= "2026-12" && mkey <= "2027-07"){
+      bits.push("<b>"+nC+"</b> of <b>15</b> planned &mdash; anchors only, fill the rest on the 25th");
+    } else {
+      bits.push("<b>"+nC+"</b> piece"+(nC===1?"":"s")+" going out");
+    }
+    bits.push("<b>"+nT+"</b> task"+(nT===1?"":"s")+" due");
+    bits.push("Ram <b>"+byOwner.Ram+"</b> · Bipin <b>"+byOwner.Bipin+"</b> · Shivam <b>"+byOwner.Shivam+"</b>");
+    var per = [];
+    PERIODS.forEach(function(p){
+      var mStart = key(state.y, state.m, 1), mEnd = key(state.y, state.m, daysInMonth);
+      if(p.to >= mStart && p.from <= mEnd) per.push(p.name);
+    });
+    if(ADS[mkey]) bits.push("Ads " + ADS[mkey]);
+    if(per.length) bits.push(per.join("   ·   "));
+    s.innerHTML = bits.join("&nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp;");
+  }
+
+  /* ============ main render ============ */
+  function render(){
+    document.getElementById("mtitle").textContent = MON[state.m] + " " + state.y;
+    buildFilters();
+    renderSub();
+    if(state.view === "month") renderMonth(); else renderAgenda();
+    Array.prototype.forEach.call(document.querySelectorAll("[data-view]"), function(b){
+      b.classList.toggle("on", b.getAttribute("data-view") === state.view);
+    });
+  }
+
+  /* ============ wiring ============ */
+  document.getElementById("prev").onclick = function(){
+    state.m--; if(state.m<0){ state.m=11; state.y--; } render();
+  };
+  document.getElementById("next").onclick = function(){
+    state.m++; if(state.m>11){ state.m=0; state.y++; } render();
+  };
+  document.getElementById("today").onclick = function(){
+    state.y = +TODAY.split("-")[0]; state.m = +TODAY.split("-")[1]-1; render();
+  };
+  Array.prototype.forEach.call(document.querySelectorAll("[data-view]"), function(b){
+    b.onclick = function(){ state.view = b.getAttribute("data-view"); render(); };
+  });
+  document.getElementById("printBtn").onclick = function(){ window.print(); };
+  document.getElementById("ov").onclick = closeDay;
+  document.getElementById("px").onclick = closeDay;
+  document.onkeydown = function(e){
+    if(e.key === "Escape") closeDay();
+    if(e.key === "ArrowLeft") document.getElementById("prev").click();
+    if(e.key === "ArrowRight") document.getElementById("next").click();
+  };
+
+  // Cell heights change with the window, so the "+N more" trim has to be redone.
+  var rt;
+  window.onresize = function(){ clearTimeout(rt); rt = setTimeout(render, 150); };
+
+  render();
+})();
+</script>
+</body>
+</html>
